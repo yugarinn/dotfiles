@@ -1,0 +1,43 @@
+# PATH VARIABLES
+# ------------
+export GOPATH=$HOME/work
+export EDITOR='vim'
+
+export PATH="$PATH:$HOME/.config/composer/vendor/bin"
+
+# ALIASES
+# ------------
+alias vg="vagrant"
+alias dk="docker"
+alias py="python"
+alias nd="node"
+alias vi="vim"
+alias svi="sudo vim"
+alias fucking="sudo"
+alias emacs.="emacs . &"
+alias artisan="php artisan"
+alias yrn="yarn"
+alias histg="history | grep"
+alias hp="echo '[========  ] - 87 HP'"
+alias cdc="cd ~/code"
+alias cdd="cd ~/.dotfiles"
+alias backlight="sudo ~/.dotfiles/bin/helpers/backlight.sh"
+alias cheat="cht.sh"
+
+# FUNCTIONS
+# ------------
+mcd () {
+  mkdir -p $1
+  cd $1
+}
+
+cdp () {
+  cd ~/code/$1/
+  pwd
+}
+
+cls () {
+  cd $1
+  ls
+}
+

@@ -1,0 +1,8 @@
+# remap key prefix to C-x
+unbind C-b
+set-option -g prefix C-x
+bind-key C-x send-prefix
+
+# set tmux to vi mode
+set-window-option -g mode-keys vi
+

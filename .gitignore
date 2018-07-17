@@ -1,0 +1,11 @@
+.tags
+
+# Emacs things
+\#*#
+configs/emacs.d/*
+*.elc
+!configs/emacs.d/eshell/alias
+!configs/emacs.d/lisp
+!configs/emacs.d/snippets
+!configs/emacs.d/init.el
+!configs/emacs.d/custom.el

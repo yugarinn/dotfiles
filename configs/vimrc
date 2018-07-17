@@ -1,0 +1,6 @@
+" Show line numbers
+set number
+
+" Toggle relative and absolute line numbers on Insert mode
+autocmd InsertEnter * :set norelativenumber
+autocmd InsertLeave * :set relativenumber
