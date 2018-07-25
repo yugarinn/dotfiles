@@ -4,6 +4,7 @@ export GOPATH=$HOME/work
 export EDITOR='vim'
 
 export PATH="$PATH:$HOME/.config/composer/vendor/bin"
+export PATH=~/.local/bin:$PATH
 
 # ALIASES
 # ------------

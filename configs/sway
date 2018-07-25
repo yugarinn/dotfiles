@@ -198,3 +198,5 @@ include /etc/sway/config.d/*
 
 setxkbmap -layout es -option caps:escape
 
+
+output eDP-1 scale 2 resolution 3840x2160

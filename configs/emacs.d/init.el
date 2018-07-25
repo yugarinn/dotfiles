@@ -9,37 +9,40 @@
 
 ;; 0.0 - Check installed packages
 
-(defvar my/packages '(evil
+(defvar my/packages '(
+                      atom-one-dark-theme
                       auto-complete
-                      neotree
-                      use-package
+                      csharp-mode
+                      ctags-update
+                      doom-themes
+                      emmet-mode
+                      evil
+                      feature-mode
+                      firestarter
+                      git-gutter-fringe
                       helm
                       helm-projectile
                       highlight-indent-guides
-                      nlinum-relative
-                      powerline
-                      multiple-cursors
-                      yasnippet
-                      smooth-scrolling
-                      phpcbf
-                      git-gutter-fringe
-                      persistent-scratch
-                      web-mode
-                      php-mode
-                      emmet-mode
-                      vue-mode
-                      yaml-mode
-                      feature-mode
-                      csharp-mode
-                      rust-mode
                       js2-mode
+                      magit
                       markdown-mode
-                      firestarter
-                      ctags-update
-                      atom-one-dark-theme
-                      doom-themes
+                      multiple-cursors
+                      neotree
+                      nlinum-relative
+                      org
+                      persistent-scratch
+                      php-mode
+                      phpcbf
+                      powerline
+                      rust-mode
+                      smooth-scrolling
+                      use-package
+                      vue-mode
+                      web-mode
+                      yaml-mode
+                      yasnippet
                       zenburn-theme
-                      org)
+                      )
   "Default packages")
 
 (defun my/packages-installed-p ()
@@ -101,7 +104,8 @@
 (setq ring-bell-function 'ignore)
 
 ;; Reduce font-size
-(set-face-attribute 'default nil :height 85)
+(set-face-attribute 'default nil :height 83)
+(setq-default line-spacing 5)
 
 ;; Show line-numbers
 (require 'nlinum-relative)
@@ -151,7 +155,7 @@
     (space-mark   ?\xA0  [?\u00A4]     [?_])
     (newline-mark ?\n [?¬ ?\n])
     (tab-mark     ?\t    [?\u00BB ?\t] [?\\ ?\t])))
-(setq whitespace-line-column 99999)
+(setq whitespace-line-column 999)
 
 (require 'whitespace)
 
@@ -222,7 +226,7 @@
   (interactve)
   (let ((tags-directory (directory-file-name (projectile-project-root))))
     (shell-command
-     (format "ctags -f %s -e -R %s --exclude=node_modules --exclude=vendor --exclude=.git" tags-file-name tags-directory))))
+     (format "ctags -R --exclude=node_modules --exclude=vendor --exclude=.git ." tags-file-name tags-directory))))
 
 ;; Split windows vertically by default
 (setq split-width-threshold nil)
@@ -472,6 +476,9 @@
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 ;; Better imenu
 (add-hook 'js2-mode-hook #'js2-imenu-extras-mode)
+
+;; 2.20 MAGIT
+(global-set-key (kbd "C-x g") 'magit-status)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
