@@ -2,6 +2,8 @@
 # ------------
 export GOPATH=$HOME/work
 export EDITOR='vim'
+export ANDROID_HOME='/home/sergio/Android/Sdk'
+export JAVA_HOME='/usr/lib/jvm/jre-1.8.0'
 
 export PATH="$PATH:$HOME/.config/composer/vendor/bin"
 export PATH=~/.local/bin:$PATH

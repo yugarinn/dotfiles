@@ -8,13 +8,14 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 
 ;; 0.0 - Check installed packages
-
 (defvar my/packages '(
                       atom-one-dark-theme
                       auto-complete
                       csharp-mode
                       ctags-update
                       doom-themes
+                      dumb-jump
+                      edbi
                       emmet-mode
                       evil
                       feature-mode
@@ -27,10 +28,10 @@
                       magit
                       markdown-mode
                       multiple-cursors
-                      neotree
                       nlinum-relative
                       org
                       persistent-scratch
+                      prettier-js
                       php-mode
                       phpcbf
                       powerline
@@ -90,6 +91,9 @@
         tab-width my/tab-size
         c-basic-offset my/tab-size))
 
+(defun my/js2-mode-hook ()
+  (setq js2-basic-offset 2))
+
 (defun my/scss-mode-hook ()
   (setq css-indent-level my/tab-size
         tab-width my/tab-size
@@ -99,6 +103,7 @@
 (add-hook 'web-mode-hook 'my/web-mode-hook)
 (add-hook 'js-mode-hook 'my/js-mode-hook)
 (add-hook 'scss-mode-hook 'my/scss-mode-hook)
+(add-hook 'js2-mode-hook 'my/js2-mode-hook)
 
 ;; Make it shut up
 (setq ring-bell-function 'ignore)
@@ -114,6 +119,10 @@
 (setq nlinum-relative-redisplay-delay 0)
 (setq nlinum-relative-current-symbol "")
 (setq nlinum-relative-offset 0)
+(setq-default right-fringe-width 10)
+(setq-default left-fringe-width 10)
+
+(setq auto-window-vscroll nil)
 
 ;; Highlight current line
 (global-hl-line-mode 1)
@@ -257,14 +266,6 @@
 (define-key evil-normal-state-map (kbd "gf")
   (lambda () (interactive) (find-tag (find-tag-default-as-regexp))))
 
-;; 2.2 - NEOTREE
-;; (require 'neotree)
-;; (global-set-key [f8] 'neotree-toggle)
-
-;; (defun my/neotree-hook (_unused)
-;:   (linum-mode -1))
-;; (add-hook 'neo-after-create-hook 'my/neotree-hook)
-
 ;; 2.2 - TREEMACS
 (use-package treemacs
   :ensure t
@@ -285,21 +286,25 @@
           treemacs-show-hidden-files          t
           treemacs-never-persist              nil
           treemacs-is-never-other-window      nil
+          treemacs-no-png-images              t
           treemacs-goto-tag-strategy          'refetch-index)
 
     (treemacs-follow-mode t)
-    (treemacs-filewatch-mode t))
+    (treemacs-filewatch-mode t)
+    (treemacs-git-mode 'deferred))
   :bind
   (:map global-map
-        ([f8]        . treemacs-toggle)
+        ([f8]        . treemacs)
         ("M-0"       . treemacs-select-window)
         ("C-c 1"     . treemacs-delete-other-windows)))
 
 (use-package treemacs-projectile
-:defer t
-:ensure t
-:config
-(setq treemacs-header-function #'treemacs-projectile-create-header))
+  :defer t
+  :ensure t
+  :config
+  (setq treemacs-header-function #'treemacs-projectile-create-header))
+
+(global-set-key (kbd "C-c h") 'helm-command-prefix)
 
 ;; 2.3 - WEB-MODE
 (require 'web-mode)
@@ -476,24 +481,20 @@
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 ;; Better imenu
 (add-hook 'js2-mode-hook #'js2-imenu-extras-mode)
+;; Prettier
+(require 'prettier-js)
+(add-hook 'js2-mode-hook 'prettier-js-mode)
+
+;; PHPCBF
+;; (require 'phpcbf)
+
+(add-hook 'php-mode-hook 'phpcbf-enable-on-save)
 
 ;; 2.20 MAGIT
 (global-set-key (kbd "C-x g") 'magit-status)
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   (quote
-    ("649ca960922e2176a451db44624bc4dbcd282bc1660d2621793145232f688836" "e9460a84d876da407d9e6accf9ceba453e2f86f8b86076f37c08ad155de8223c" "611e38c2deae6dcda8c5ac9dd903a356c5de5b62477469133c89b2785eb7a14d" "d507c9e58cb0eb8508e15c8fedc2d4e0b119123fab0546c5fd30cadd3705ac86" "365d9553de0e0d658af60cff7b8f891ca185a2d7ba3fc6d29aadba69f5194c7f" "b81bfd85aed18e4341dbf4d461ed42d75ec78820a60ce86730fc17fc949389b2" "9f569b5e066dd6ca90b3578ff46659bc09a8764e81adf6265626d7dc0fac2a64" "8d18c09a80705bb5c807a65141285228fb2dc549fa5bf93ba6ba99e0f1507aef" "67e998c3c23fe24ed0fb92b9de75011b92f35d3e89344157ae0d544d50a63a72" "96998f6f11ef9f551b427b8853d947a7857ea5a578c75aa9c4e7c73fe04d10b4" "e0d42a58c84161a0744ceab595370cbe290949968ab62273aed6212df0ea94b4" "2b6a2d39fecd7c878519043fcb4f58d4107a6045188e2c4a6aba006e1ddd78f6" "0c29db826418061b40564e3351194a3d4a125d182c6ee5178c237a7364f0ff12" "987b709680284a5858d5fe7e4e428463a20dfabe0a6f2a6146b3b8c7c529f08b" "3cd28471e80be3bd2657ca3f03fbb2884ab669662271794360866ab60b6cb6e6" "3cc2385c39257fed66238921602d8104d8fd6266ad88a006d0a4325336f5ee02" "e9776d12e4ccb722a2a732c6e80423331bcb93f02e089ba2a4b02e85de1cf00e" "72a81c54c97b9e5efcc3ea214382615649ebb539cb4f2fe3a46cd12af72c7607" "b3775ba758e7d31f3bb849e7c9e48ff60929a792961a2d536edec8f68c671ca5" "9b59e147dbbde5e638ea1cde5ec0a358d5f269d27bd2b893a0947c4a867e14c1" "96a67a8e9ef4363d10f836999a2e3d831ca298db09f0c0e0c5ad0dda56d35040" "58c6711a3b568437bab07a30385d34aacf64156cc5137ea20e799984f4227265" "d29231b2550e0d30b7d0d7fc54a7fb2aa7f47d1b110ee625c1a56b30fea3be0f" "a1289424bbc0e9f9877aa2c9a03c7dfd2835ea51d8781a0bf9e2415101f70a7e" "98cc377af705c0f2133bb6d340bf0becd08944a588804ee655809da5d8140de6" "3d5ef3d7ed58c9ad321f05360ad8a6b24585b9c49abcee67bdcbb0fe583a6950" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
- '(git-gutter:added-sign "|")
- '(git-gutter:deleted-sign "-")
- '(git-gutter:modified-sign "|")
- '(package-selected-packages
-   (quote
-    (js2-mode atom-one-dark-theme kaolin-themes doom-themes feature-mode smooth-scrolling gruvbox-theme git-gutter-fringe+ zenburn-theme dracula-theme git-gutter+ helm-projectile helm rust-mode web-mode neotree material-theme evil))))
+;; 2.21 DUMB-JUMP
+(dumb-jump-mode)
 
 ;; 3. THEMES
 
@@ -505,3 +506,11 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (treemacs-projectile treemacs-evil treemacs zenburn-theme yasnippet yaml-mode web-mode vue-mode use-package smooth-scrolling rust-mode powerline phpcbf php-mode prettier-js persistent-scratch nlinum-relative multiple-cursors markdown-mode magit js2-mode highlight-indent-guides helm-projectile helm git-gutter-fringe firestarter feature-mode evil emmet-mode edbi dumb-jump doom-themes ctags-update csharp-mode auto-complete atom-one-dark-theme))))
