@@ -20,6 +20,7 @@
                       evil
                       feature-mode
                       firestarter
+                      flycheck
                       git-gutter-fringe
                       helm
                       helm-projectile
@@ -92,7 +93,9 @@
         c-basic-offset my/tab-size))
 
 (defun my/js2-mode-hook ()
-  (setq js2-basic-offset 2))
+  (setq js2-basic-offset 2)
+  (setq js2-mode-show-parse-errors nil)
+  (setq js2-mode-show-strict-warnings nil))
 
 (defun my/scss-mode-hook ()
   (setq css-indent-level my/tab-size
@@ -290,8 +293,7 @@
           treemacs-goto-tag-strategy          'refetch-index)
 
     (treemacs-follow-mode t)
-    (treemacs-filewatch-mode t)
-    (treemacs-git-mode 'deferred))
+    (treemacs-filewatch-mode t))
   :bind
   (:map global-map
         ([f8]        . treemacs)
@@ -479,15 +481,28 @@
 ;; 2.19 JS2-MODE
 (require 'js2-mode)
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+
+;; 2.20 FLYCHECK
+;; (add-hook 'after-init-hook #'global-flycheck-mode)
+
 ;; Better imenu
 (add-hook 'js2-mode-hook #'js2-imenu-extras-mode)
 ;; Prettier
 (require 'prettier-js)
-(add-hook 'js2-mode-hook 'prettier-js-mode)
+;; (add-hook 'js2-mode-hook 'prettier-js-mode)
 
-;; PHPCBF
-;; (require 'phpcbf)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (treemacs-projectile treemacs-evil treemacs zenburn-theme yasnippet yaml-mode web-mode vue-mode use-package smooth-scrolling rust-mode powerline phpcbf php-mode prettier-js persistent-scratch nlinum-relative multiple-cursors markdown-mode magit js2-mode highlight-indent-guides helm-projectile helm git-gutter-fringe firestarter feature-mode evil emmet-mode edbi dumb-jump doom-themes ctags-update csharp-mode auto-complete atom-one-dark-theme)))
+ '(phpcbf-executable "~/.config/composer/vendor/bin/phpcbf")
+ '(phpcbf-standard "PSR2"))
 
+;; Autoformat on save
 (add-hook 'php-mode-hook 'phpcbf-enable-on-save)
 
 ;; 2.20 MAGIT
@@ -506,11 +521,4 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (treemacs-projectile treemacs-evil treemacs zenburn-theme yasnippet yaml-mode web-mode vue-mode use-package smooth-scrolling rust-mode powerline phpcbf php-mode prettier-js persistent-scratch nlinum-relative multiple-cursors markdown-mode magit js2-mode highlight-indent-guides helm-projectile helm git-gutter-fringe firestarter feature-mode evil emmet-mode edbi dumb-jump doom-themes ctags-update csharp-mode auto-complete atom-one-dark-theme))))
+
