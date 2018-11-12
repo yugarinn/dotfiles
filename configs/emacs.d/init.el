@@ -93,7 +93,7 @@
         c-basic-offset my/tab-size))
 
 (defun my/js2-mode-hook ()
-  (setq js2-basic-offset 2)
+  (setq js2-basic-offset 4)
   (setq js2-mode-show-parse-errors nil)
   (setq js2-mode-show-strict-warnings nil))
 
@@ -214,8 +214,11 @@
 (global-set-key (kbd "M-C-<down>") 'shrink-window)
 (global-set-key (kbd "M-C-<up>") 'enlarge-window)
 
+;; Shortcuts
+;; devlog shortcut
+(global-set-key (kbd "<f5>") (lambda() (interactive)(find-file "~/code/devlog.md")))
+
 ;; init.el shortcut
-;; Might be better to use user-init-file
 (global-set-key (kbd "<f6>") (lambda() (interactive)(find-file "~/.emacs.d/init.el")))
 
 ;; snippets shortcut
@@ -457,8 +460,6 @@
 (define-key global-map "\C-ca" 'org-agenda)
 
 (setq org-log-done t)
-
-(global-set-key (kbd "<f5>") (lambda() (interactive)(find-file "~/Org")))
 
 ;; 2.14 - VUE-MODE
 (require 'vue-mode)
