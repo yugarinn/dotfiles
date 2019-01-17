@@ -93,7 +93,7 @@
         c-basic-offset my/tab-size))
 
 (defun my/js2-mode-hook ()
-  (setq js2-basic-offset 4)
+  (setq js2-basic-offset 2)
   (setq js2-mode-show-parse-errors nil)
   (setq js2-mode-show-strict-warnings nil))
 
@@ -216,7 +216,7 @@
 
 ;; Shortcuts
 ;; devlog shortcut
-(global-set-key (kbd "<f5>") (lambda() (interactive)(find-file "~/code/devlog.md")))
+(global-set-key (kbd "<f5>") (lambda() (interactive)(find-file "~/code/devlog/devlog.md")))
 
 ;; init.el shortcut
 (global-set-key (kbd "<f6>") (lambda() (interactive)(find-file "~/.emacs.d/init.el")))
@@ -376,7 +376,8 @@
 (require 'helm-projectile)
 (helm-projectile-on)
 
-(global-set-key (kbd "C-x C-p") 'helm-projectile)
+(global-set-key (kbd "C-p") 'helm-projectile)
+(define-key evil-normal-state-map (kbd "C-p") 'helm-projectile)
 
 ;; 2.7 - AUTOCOMPLETE
 (require 'auto-complete-config)
@@ -499,7 +500,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (treemacs-projectile treemacs-evil treemacs zenburn-theme yasnippet yaml-mode web-mode vue-mode use-package smooth-scrolling rust-mode powerline phpcbf php-mode prettier-js persistent-scratch nlinum-relative multiple-cursors markdown-mode magit js2-mode highlight-indent-guides helm-projectile helm git-gutter-fringe firestarter feature-mode evil emmet-mode edbi dumb-jump doom-themes ctags-update csharp-mode auto-complete atom-one-dark-theme)))
+    (fireplace websocket treemacs-projectile treemacs-evil treemacs zenburn-theme yasnippet yaml-mode web-mode vue-mode use-package smooth-scrolling rust-mode powerline phpcbf php-mode prettier-js persistent-scratch nlinum-relative multiple-cursors markdown-mode magit js2-mode highlight-indent-guides helm-projectile helm git-gutter-fringe firestarter feature-mode evil emmet-mode edbi dumb-jump doom-themes ctags-update csharp-mode auto-complete atom-one-dark-theme)))
  '(phpcbf-executable "~/.config/composer/vendor/bin/phpcbf")
  '(phpcbf-standard "PSR2"))
 
@@ -511,6 +512,10 @@
 
 ;; 2.21 DUMB-JUMP
 (dumb-jump-mode)
+
+;; 2.22 - WEBSOCKET
+;; used by markdown-preview-mode
+(require 'websocket)
 
 ;; 3. THEMES
 

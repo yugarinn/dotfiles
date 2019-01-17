@@ -26,6 +26,7 @@ alias cdc="cd ~/code"
 alias cdd="cd ~/.dotfiles"
 alias backlight="sudo ~/.dotfiles/bin/helpers/backlight.sh"
 alias cheat="cht.sh"
+alias open="xdg-open"
 
 # FUNCTIONS
 # ------------
