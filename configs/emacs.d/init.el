@@ -93,7 +93,7 @@
         c-basic-offset my/tab-size))
 
 (defun my/js2-mode-hook ()
-  (setq js2-basic-offset 2)
+  (setq js2-basic-offset 4)
   (setq js2-mode-show-parse-errors nil)
   (setq js2-mode-show-strict-warnings nil))
 
@@ -296,7 +296,13 @@
           treemacs-goto-tag-strategy          'refetch-index)
 
     (treemacs-follow-mode t)
-    (treemacs-filewatch-mode t))
+    (treemacs-filewatch-mode t)
+    (pcase (cons (not (null (executable-find "git")))
+                 (not (null (executable-find "python3"))))
+      (`(t . t)
+       (treemacs-git-mode 'deferred))
+      (`(t . _)
+       (treemacs-git-mode 'simple))))
   :bind
   (:map global-map
         ([f8]        . treemacs)
@@ -498,9 +504,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("2beaaef4f47f22c89948fdb3859799f8f2b64c1282ec21d71d6df49d68e68862" default)))
  '(package-selected-packages
    (quote
-    (fireplace websocket treemacs-projectile treemacs-evil treemacs zenburn-theme yasnippet yaml-mode web-mode vue-mode use-package smooth-scrolling rust-mode powerline phpcbf php-mode prettier-js persistent-scratch nlinum-relative multiple-cursors markdown-mode magit js2-mode highlight-indent-guides helm-projectile helm git-gutter-fringe firestarter feature-mode evil emmet-mode edbi dumb-jump doom-themes ctags-update csharp-mode auto-complete atom-one-dark-theme)))
+    (fill-column-indicator nova-theme fireplace websocket treemacs-projectile treemacs-evil treemacs zenburn-theme yasnippet yaml-mode web-mode vue-mode use-package smooth-scrolling rust-mode powerline phpcbf php-mode prettier-js persistent-scratch nlinum-relative multiple-cursors markdown-mode magit js2-mode highlight-indent-guides helm-projectile helm git-gutter-fringe firestarter feature-mode evil emmet-mode edbi dumb-jump doom-themes ctags-update csharp-mode auto-complete atom-one-dark-theme)))
  '(phpcbf-executable "~/.config/composer/vendor/bin/phpcbf")
  '(phpcbf-standard "PSR2"))
 

@@ -45,5 +45,8 @@ cls () {
   ls
 }
 
+random () {
+  head /dev/urandom | tr -dc A-Za-z0-9 | head -c $1 ; echo ''
+}
 
 export PATH="$HOME/.cargo/bin:$PATH"
