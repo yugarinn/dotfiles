@@ -208,6 +208,10 @@
           (function (lambda ()
                       (whitespace-mode 1))))
 
+(add-hook 'graphql-mode-hook
+          (function (lambda ()
+                      (whitespace-mode 1))))
+
 ;; Window resize
 (global-set-key (kbd "M-C-<left>") 'shrink-window-horizontally)
 (global-set-key (kbd "M-C-<right>") 'enlarge-window-horizontally)
@@ -385,6 +389,9 @@
 (global-set-key (kbd "C-p") 'helm-projectile)
 (define-key evil-normal-state-map (kbd "C-p") 'helm-projectile)
 
+;; save keybind (overwrites I-search)
+(global-set-key (kbd "C-s") 'save-buffer)
+
 ;; 2.7 - AUTOCOMPLETE
 (require 'auto-complete-config)
 (ac-config-default)
@@ -509,12 +516,12 @@
     ("2beaaef4f47f22c89948fdb3859799f8f2b64c1282ec21d71d6df49d68e68862" default)))
  '(package-selected-packages
    (quote
-    (fill-column-indicator nova-theme fireplace websocket treemacs-projectile treemacs-evil treemacs zenburn-theme yasnippet yaml-mode web-mode vue-mode use-package smooth-scrolling rust-mode powerline phpcbf php-mode prettier-js persistent-scratch nlinum-relative multiple-cursors markdown-mode magit js2-mode highlight-indent-guides helm-projectile helm git-gutter-fringe firestarter feature-mode evil emmet-mode edbi dumb-jump doom-themes ctags-update csharp-mode auto-complete atom-one-dark-theme)))
+    (graphql-mode fill-column-indicator nova-theme fireplace websocket treemacs-projectile treemacs-evil treemacs zenburn-theme yasnippet yaml-mode web-mode vue-mode use-package smooth-scrolling rust-mode powerline phpcbf php-mode prettier-js persistent-scratch nlinum-relative multiple-cursors markdown-mode magit js2-mode highlight-indent-guides helm-projectile helm git-gutter-fringe firestarter feature-mode evil emmet-mode edbi dumb-jump doom-themes ctags-update csharp-mode auto-complete atom-one-dark-theme)))
  '(phpcbf-executable "~/.config/composer/vendor/bin/phpcbf")
  '(phpcbf-standard "PSR2"))
 
 ;; Autoformat on save
-(add-hook 'php-mode-hook 'phpcbf-enable-on-save)
+;; (add-hook 'php-mode-hook 'phpcbf-enable-on-save)
 
 ;; 2.20 MAGIT
 (global-set-key (kbd "C-x g") 'magit-status)
