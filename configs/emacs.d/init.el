@@ -45,7 +45,7 @@
                       yasnippet
                       zenburn-theme
                       )
-  "Default packages")
+  "Default packages.")
 
 (defun my/packages-installed-p ()
   (cl-loop for package in my/packages
@@ -220,7 +220,7 @@
 
 ;; Shortcuts
 ;; devlog shortcut
-(global-set-key (kbd "<f5>") (lambda() (interactive)(find-file "~/code/devlog/devlog.md")))
+(global-set-key (kbd "<f5>") (lambda() (interactive)(find-file "~/org/todo.org")))
 
 ;; init.el shortcut
 (global-set-key (kbd "<f6>") (lambda() (interactive)(find-file "~/.emacs.d/init.el")))
@@ -474,6 +474,7 @@
 (define-key global-map "\C-ca" 'org-agenda)
 
 (setq org-log-done t)
+(setq org-agenda-files '("~/org"))
 
 ;; 2.14 - VUE-MODE
 (require 'vue-mode)
