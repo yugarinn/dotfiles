@@ -13,11 +13,13 @@
                       auto-complete
                       csharp-mode
                       ctags-update
+                      company
                       doom-themes
                       dumb-jump
                       edbi
                       emmet-mode
                       evil
+                      exec-path-from-shell
                       feature-mode
                       firestarter
                       flycheck
@@ -32,12 +34,15 @@
                       nlinum-relative
                       org
                       persistent-scratch
-                      prettier-js
                       php-mode
                       phpcbf
                       powerline
+                      prettier-js
                       rust-mode
+                      scala-mode
                       smooth-scrolling
+                      tide
+                      typescript-mode
                       use-package
                       vue-mode
                       web-mode
@@ -102,11 +107,15 @@
         tab-width my/tab-size
         c-basic-offset my/tab-size))
 
+(defun my/typescript-mode-hook ()
+  (setq typescript-indent-level 2))
+
 (add-hook 'php-mode-hook 'my/php-mode-hook)
 (add-hook 'web-mode-hook 'my/web-mode-hook)
 (add-hook 'js-mode-hook 'my/js-mode-hook)
 (add-hook 'scss-mode-hook 'my/scss-mode-hook)
 (add-hook 'js2-mode-hook 'my/js2-mode-hook)
+(add-hook 'typescript-mode-hook 'my/typescript-mode-hook)
 
 ;; Make it shut up
 (setq ring-bell-function 'ignore)
@@ -209,6 +218,18 @@
                       (whitespace-mode 1))))
 
 (add-hook 'graphql-mode-hook
+          (function (lambda ()
+                      (whitespace-mode 1))))
+
+(add-hook 'c-mode-hook
+          (function (lambda ()
+                      (whitespace-mode 1))))
+
+(add-hook 'scala-mode-hook
+          (function (lambda ()
+                      (whitespace-mode 1))))
+
+(add-hook 'typescript-mode-hook
           (function (lambda ()
                       (whitespace-mode 1))))
 
@@ -501,6 +522,13 @@
 ;; 2.20 FLYCHECK
 ;; (add-hook 'after-init-hook #'global-flycheck-mode)
 
+;; 2.21 C-MODE
+(setq c-default-style "linux"
+      c-basic-offset 4)
+
+;; 2.22 SCALA-MODE
+(add-to-list 'auto-mode-alist '("\.scala" . scala-mode) '("\.sbt\'" . scala-mode) )
+
 ;; Better imenu
 (add-hook 'js2-mode-hook #'js2-imenu-extras-mode)
 ;; Prettier
@@ -517,7 +545,7 @@
     ("2beaaef4f47f22c89948fdb3859799f8f2b64c1282ec21d71d6df49d68e68862" default)))
  '(package-selected-packages
    (quote
-    (graphql-mode fill-column-indicator nova-theme fireplace websocket treemacs-projectile treemacs-evil treemacs zenburn-theme yasnippet yaml-mode web-mode vue-mode use-package smooth-scrolling rust-mode powerline phpcbf php-mode prettier-js persistent-scratch nlinum-relative multiple-cursors markdown-mode magit js2-mode highlight-indent-guides helm-projectile helm git-gutter-fringe firestarter feature-mode evil emmet-mode edbi dumb-jump doom-themes ctags-update csharp-mode auto-complete atom-one-dark-theme)))
+    (company scala-mode graphql-mode fill-column-indicator nova-theme fireplace websocket treemacs-projectile treemacs-evil treemacs zenburn-theme yasnippet yaml-mode web-mode vue-mode use-package smooth-scrolling rust-mode powerline phpcbf php-mode prettier-js persistent-scratch nlinum-relative multiple-cursors markdown-mode magit js2-mode highlight-indent-guides helm-projectile helm git-gutter-fringe firestarter feature-mode evil emmet-mode edbi dumb-jump doom-themes ctags-update csharp-mode auto-complete atom-one-dark-theme)))
  '(phpcbf-executable "~/.config/composer/vendor/bin/phpcbf")
  '(phpcbf-standard "PSR2"))
 
@@ -533,6 +561,32 @@
 ;; 2.22 - WEBSOCKET
 ;; used by markdown-preview-mode
 (require 'websocket)
+
+;; 2.23 Typescript
+;; Allow emacs to find nvm installed node
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
+(defun setup-tide-mode ()
+  (interactive)
+  (tide-setup)
+  (global-set-key (kbd "C-M-g") 'tide-jump-to-definition)
+  (flycheck-mode +1)
+  (dumb-jump-mode -1)
+  (setq flycheck-check-syntax-automatically '(save mode-enabled))
+  (eldoc-mode +1)
+  (tide-hl-identifier-mode +1)
+  ;; company is an optional dependency. You have to
+  ;; install it separately via package-install
+  ;; `M-x package-install [ret] company`
+  (company-mode +1))
+
+;; aligns annotation to the right hand side
+(setq company-tooltip-align-annotations t)
+
+;; formats the buffer before saving
+;; (add-hook 'before-save-hook 'tide-format-before-save)
+
+(add-hook 'typescript-mode-hook #'setup-tide-mode)
 
 ;; 3. THEMES
 
