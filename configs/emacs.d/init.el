@@ -1,19 +1,34 @@
-(package-initialize)
-
 (setq user-full-name "Sergio Uve")
 (setq user-mail-address "sergiouve@gmail.com")
 
 ;; 0. MELPA
 (require 'package)
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+(let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
+                    (not (gnutls-available-p))))
+       (proto (if no-ssl "http" "https")))
+  (when no-ssl
+    (warn "\
+Your version of Emacs does not support SSL connections,
+which is unsafe because it allows man-in-the-middle attacks.
+There are two things you can do about this warning:
+1. Install an Emacs version that does support SSL and be safe.
+2. Remove this warning from your init file so you won't see it again."))
+  ;; Comment/uncomment these two lines to enable/disable MELPA and MELPA Stable as desired
+  (add-to-list 'package-archives (cons "melpa" (concat proto "://melpa.org/packages/")) t)
+  ;;(add-to-list 'package-archives (cons "melpa-stable" (concat proto "://stable.melpa.org/packages/")) t)
+  (when (< emacs-major-version 24)
+    ;; For important compatibility libraries like cl-lib
+    (add-to-list 'package-archives (cons "gnu" (concat proto "://elpa.gnu.org/packages/")))))
+(package-initialize)
 
 ;; 0.0 - Check installed packages
 (defvar my/packages '(
                       atom-one-dark-theme
                       auto-complete
+                      company
                       csharp-mode
                       ctags-update
-                      company
+                      dockerfile-mode
                       doom-themes
                       dumb-jump
                       edbi
@@ -25,6 +40,7 @@
                       flycheck
                       git-gutter-fringe
                       helm
+                      helm-posframe
                       helm-projectile
                       highlight-indent-guides
                       js2-mode
@@ -98,7 +114,7 @@
         c-basic-offset my/tab-size))
 
 (defun my/js2-mode-hook ()
-  (setq js2-basic-offset 4)
+  (setq js2-basic-offset 2)
   (setq js2-mode-show-parse-errors nil)
   (setq js2-mode-show-strict-warnings nil))
 
@@ -241,7 +257,7 @@
 
 ;; Shortcuts
 ;; devlog shortcut
-(global-set-key (kbd "<f5>") (lambda() (interactive)(find-file "~/org/todo.org")))
+(global-set-key (kbd "<f5>") (lambda() (interactive)(find-file "~/Dropbox/org/todos.org")))
 
 ;; init.el shortcut
 (global-set-key (kbd "<f6>") (lambda() (interactive)(find-file "~/.emacs.d/init.el")))
@@ -494,7 +510,7 @@
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
 
-(setq org-log-done t)
+(setq org-log-done nil)
 (setq org-agenda-files '("~/org"))
 
 ;; 2.14 - VUE-MODE
@@ -545,7 +561,7 @@
     ("2beaaef4f47f22c89948fdb3859799f8f2b64c1282ec21d71d6df49d68e68862" default)))
  '(package-selected-packages
    (quote
-    (company scala-mode graphql-mode fill-column-indicator nova-theme fireplace websocket treemacs-projectile treemacs-evil treemacs zenburn-theme yasnippet yaml-mode web-mode vue-mode use-package smooth-scrolling rust-mode powerline phpcbf php-mode prettier-js persistent-scratch nlinum-relative multiple-cursors markdown-mode magit js2-mode highlight-indent-guides helm-projectile helm git-gutter-fringe firestarter feature-mode evil emmet-mode edbi dumb-jump doom-themes ctags-update csharp-mode auto-complete atom-one-dark-theme)))
+    (helm-posframe company scala-mode graphql-mode fill-column-indicator nova-theme fireplace websocket treemacs-projectile treemacs-evil treemacs zenburn-theme yasnippet yaml-mode web-mode vue-mode use-package smooth-scrolling rust-mode powerline phpcbf php-mode prettier-js persistent-scratch nlinum-relative multiple-cursors markdown-mode magit js2-mode highlight-indent-guides helm-projectile helm git-gutter-fringe firestarter feature-mode evil emmet-mode edbi dumb-jump doom-themes ctags-update csharp-mode auto-complete atom-one-dark-theme)))
  '(phpcbf-executable "~/.config/composer/vendor/bin/phpcbf")
  '(phpcbf-standard "PSR2"))
 
@@ -587,6 +603,14 @@
 ;; (add-hook 'before-save-hook 'tide-format-before-save)
 
 (add-hook 'typescript-mode-hook #'setup-tide-mode)
+
+;; 2.24 Helm Posframe
+(setq helm-posframe-parameters
+      '((top-fringe . 100)
+        (right-fringe . 100)
+        (internal-border-width . 10)))
+
+;; (helm-posframe-enable)
 
 ;; 3. THEMES
 

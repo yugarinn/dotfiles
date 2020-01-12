@@ -26,6 +26,11 @@ alias cdd="cd ~/.dotfiles"
 alias backlight="sudo ~/.dotfiles/bin/helpers/backlight.sh"
 alias cheat="cht.sh"
 alias open="xdg-open"
+alias cr="cargo run"
+alias ct="cargo test"
+alias fb="firebase"
+
+ZSH_THEME="avit"
 
 # FUNCTIONS
 # ------------
