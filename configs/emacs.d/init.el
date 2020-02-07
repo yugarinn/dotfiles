@@ -103,15 +103,15 @@ There are two things you can do about this warning:
         c-basic-offset my/tab-size))
 
 (defun my/web-mode-hook ()
-  (setq web-mode-markup-indent-offset my/tab-size
-        web-mode-code-indent-offset my/tab-size
-        tab-width my/tab-size
-        c-basic-offset my/tab-size))
+  (setq web-mode-markup-indent-offset 4
+        web-mode-code-indent-offset 2
+        tab-width 2
+        c-basic-offset 2))
 
 (defun my/js-mode-hook ()
-  (setq js-indent-level my/tab-size
-        tab-width my/tab-size
-        c-basic-offset my/tab-size))
+  (setq js-indent-level 2
+        tab-width 2
+        c-basic-offset 2))
 
 (defun my/js2-mode-hook ()
   (setq js2-basic-offset 2)
@@ -373,6 +373,9 @@ There are two things you can do about this warning:
 (add-to-list 'auto-mode-alist '("\\.twig?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.vue?\\'" . web-mode))
 
+(setq web-mode-script-padding 0)
+(setq web-mode-style-padding 0)
+
 ;; 2.4 - RELATIVE NUMBERS
 ;; (global-relative-line-numbers-mode)
 
@@ -516,6 +519,11 @@ There are two things you can do about this warning:
 ;; 2.14 - VUE-MODE
 (require 'vue-mode)
 
+;; remove weird background
+(add-hook 'mmm-mode-hook
+          (lambda ()
+            (set-face-background 'mmm-default-submode-face nil)))
+
 ;; 2.15 - SMOOTH SCROLLING
 ;; (require 'smooth-scrolling)
 ;; (smooth-scrolling-mode 1)
@@ -561,7 +569,7 @@ There are two things you can do about this warning:
     ("2beaaef4f47f22c89948fdb3859799f8f2b64c1282ec21d71d6df49d68e68862" default)))
  '(package-selected-packages
    (quote
-    (helm-posframe company scala-mode graphql-mode fill-column-indicator nova-theme fireplace websocket treemacs-projectile treemacs-evil treemacs zenburn-theme yasnippet yaml-mode web-mode vue-mode use-package smooth-scrolling rust-mode powerline phpcbf php-mode prettier-js persistent-scratch nlinum-relative multiple-cursors markdown-mode magit js2-mode highlight-indent-guides helm-projectile helm git-gutter-fringe firestarter feature-mode evil emmet-mode edbi dumb-jump doom-themes ctags-update csharp-mode auto-complete atom-one-dark-theme)))
+    (helm-posframe company scala-mode graphql-mode fill-column-indicator nova-theme fireplace treemacs-projectile treemacs-evil treemacs zenburn-theme yasnippet yaml-mode web-mode vue-mode use-package smooth-scrolling rust-mode powerline phpcbf php-mode prettier-js persistent-scratch nlinum-relative multiple-cursors markdown-mode magit js2-mode highlight-indent-guides helm-projectile helm git-gutter-fringe firestarter feature-mode evil emmet-mode edbi dumb-jump doom-themes ctags-update csharp-mode auto-complete atom-one-dark-theme)))
  '(phpcbf-executable "~/.config/composer/vendor/bin/phpcbf")
  '(phpcbf-standard "PSR2"))
 
@@ -576,7 +584,7 @@ There are two things you can do about this warning:
 
 ;; 2.22 - WEBSOCKET
 ;; used by markdown-preview-mode
-(require 'websocket)
+;; (require 'websocket)
 
 ;; 2.23 Typescript
 ;; Allow emacs to find nvm installed node
@@ -605,10 +613,10 @@ There are two things you can do about this warning:
 (add-hook 'typescript-mode-hook #'setup-tide-mode)
 
 ;; 2.24 Helm Posframe
-(setq helm-posframe-parameters
-      '((top-fringe . 100)
-        (right-fringe . 100)
-        (internal-border-width . 10)))
+;; (setq helm-posframe-parameters
+;;      '((top-fringe . 100)
+;;        (right-fringe . 100)
+;;        (internal-border-width . 10)))
 
 ;; (helm-posframe-enable)
 
