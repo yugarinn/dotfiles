@@ -38,6 +38,7 @@ There are two things you can do about this warning:
                       feature-mode
                       firestarter
                       flycheck
+                      flycheck-phpstan
                       git-gutter-fringe
                       helm
                       helm-posframe
@@ -100,7 +101,9 @@ There are two things you can do about this warning:
 (defun my/php-mode-hook ()
   (setq indent-tabs-mode nil
         tab-width my/tab-size
-        c-basic-offset my/tab-size))
+        c-basic-offset my/tab-size)
+  (require 'flycheck-phpstan)
+  (flycheck-mode t))
 
 (defun my/web-mode-hook ()
   (setq web-mode-markup-indent-offset 4
@@ -137,7 +140,7 @@ There are two things you can do about this warning:
 (setq ring-bell-function 'ignore)
 
 ;; Reduce font-size
-(set-face-attribute 'default nil :height 83)
+(set-face-attribute 'default nil :height 80)
 (setq-default line-spacing 5)
 
 ;; Show line-numbers
@@ -542,9 +545,6 @@ There are two things you can do about this warning:
 ;; 2.19 JS2-MODE
 (require 'js2-mode)
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-
-;; 2.20 FLYCHECK
-;; (add-hook 'after-init-hook #'global-flycheck-mode)
 
 ;; 2.21 C-MODE
 (setq c-default-style "linux"
