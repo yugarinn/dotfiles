@@ -103,7 +103,7 @@ There are two things you can do about this warning:
         tab-width my/tab-size
         c-basic-offset my/tab-size)
   (require 'flycheck-phpstan)
-  (flycheck-mode t))
+  (flycheck-mode f))
 
 (defun my/web-mode-hook ()
   (setq web-mode-markup-indent-offset 4
@@ -174,9 +174,10 @@ There are two things you can do about this warning:
     (switch-to-buffer (other-buffer buf))
     (switch-to-buffer-other-window buf)))
 
-;; Disable backup files
+;; Disable backup and lock files
 (setq auto-save-default nil)
 (setq make-backup-files nil)
+(setq create-lockfiles nil)
 
 ;; Dired sort
 (setq dired-listing-switches "-aBhl --group-directories-first")
