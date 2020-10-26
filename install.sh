@@ -1,12 +1,7 @@
-#!/bin/sh
+#!/bin/bash
 
-# # # # # # # # # # # # # # # # # # #
-# MY CUSTOM SYSTEM CONFIG TASKS     #
-# Author: Sergio Uve                #
-# Target OS: Fedora ^23             #
-# # # # # # # # # # # # # # # # # # #
+{ # this ensures the entire script is downloaded #
 
-# Bootstrap
 while true; do
   read -p "Install software and update? (y/n) " yn
   case $yn in

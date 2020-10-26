@@ -5,5 +5,3 @@
 ```shell
 curl -o- https://raw.githubusercontent.com/sergiouve/dotfiles/install.sh | bash
 ```
-
-curl -o- https://raw.githubusercontent.com/sergiouve/dotfiles/install.sh | bash
