@@ -1,7 +1,5 @@
 #!/bin/bash
 
-{ # this ensures the entire script is downloaded #
-
 while true; do
   read -p "Install software and update? (y/n) " yn
   case $yn in
