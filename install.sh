@@ -1,5 +1,14 @@
 #!/bin/bash
 
+if ! git -v &> /dev/null
+then
+  echo 'installing git...'
+  sudo dnf install git -y
+  echo 'installing git... done'
+fi
+
+git clone --depth 1 https://github.com/sergiouve/dotfiles ~/.dotfiles
+
 while true; do
   read -p "Install software and update? (y/n) " yn
   case $yn in
