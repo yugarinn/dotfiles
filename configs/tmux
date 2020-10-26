@@ -7,5 +7,5 @@ bind-key C-x send-prefix
 set-window-option -g mode-keys vi
 
 # Increase scorll buffer size
-set-option -g history-limit 5000
+set-option -g history-limit 10000
 

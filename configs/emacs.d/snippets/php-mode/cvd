@@ -1,5 +1,0 @@
-#name : PHP cool var_dump
-# --
-echo 'DIE PHP! DIEEEEEE! (╯°□°）╯︵ ԀHԀ<br/>';
-print_r($0);
-die();$1

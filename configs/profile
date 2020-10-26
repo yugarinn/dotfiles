@@ -29,6 +29,7 @@ alias open="xdg-open"
 alias cr="cargo run"
 alias ct="cargo test"
 alias fb="firebase"
+alias dea="docker-compose exec app"
 
 ZSH_THEME="avit"
 

@@ -6,128 +6,67 @@
 sudo dnf update -y
 
 # *. ADD RMPFUSION
-sudo rpm -ivh http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-25.noarch.rpm
+sudo rpm -ivh http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-32.noarch.rpm
 
-# 2. INSTALL DEV SOFTWARE
+# 1. INSTALL MISC SOFTWARE
 # -----------------
 
+# GIT
+echo 'installing git...'
+sudo dnf install git -y
+echo 'installing git... done'
+
 # EMACS
-echo '=>Installing Emacs'
+echo 'installing emacs...'
 sudo dnf install emacs -y
-echo '=>Done'
-
-# ATOM
-echo '=> Installign Atom...'
-ATOM_LATEST_VERSION=$(wget -q "https://api.github.com/repos/atom/atom/releases/latest"  -O - | grep -E "https.*atom-amd64.tar.gz" | cut -d '"' -f 4 | cut -d '/' -f 8 | sed 's/v//g')
-
-wget -c https://github.com/atom/atom/releases/download/v${ATOM_LATEST_VERSION}/atom.x86_64.rpm -O /tmp/atom.x86_64.rpm
-sudo dnf install /tmp/atom.x86_64.rpm -y --nogpgcheck
-rm /tmp/atom.x86_64.rpm
-echo '=> Done'
-
-# FILEZILLA
-echo '=> Installing Filezilla'
-sudo dnf install filezilla -y
-echo '=> Done'
-
-# VIRTUALBOX
-echo '=> Installing VirtualBox-5.1'
-sudo dnf install binutils qt gcc make patch libgomp glibc-headers glibc-devel kernel-headers kernel-devel dkms -y
-cd /etc/yum.repos.d/
-sudo wget http://download.virtualbox.org/virtualbox/rpm/fedora/virtualbox.repo
-sudo dnf install VirtualBox-5.1 -y
-echo '=> Done'
-
-# VAGRANT
-echo '=> Installing Vagrant...'
-sudo dnf install vagrant -y
-echo '=> Done'
-
-# YODO
-echo '=> Installing yodo...'
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/sergiouve/yoDo/master/tools/install.sh)"
-echo '=> Done'
+git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
+~/.emacs.d/bin/doom install
+echo 'installing emacs... done'
 
 # NVM
-echo '=> Installing nvm'
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
-echo '=> Done'
+echo 'installing nvm...'
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.36.0/install.sh | bash
+echo 'installing nvm... done'
 
 # TMUX
-echo '=> Installing tmux'
+echo 'installing tmux...'
 sudo dnf install tmux -y
-echo '=> Done'
+echo 'installing tmux... done'
 
-# TMUXINATOR
-echo '=> Installing tmuxinator'
-sudo dnf install tmuxinator -y
-echo '=> Done'
+# SWAY
+echo 'installing sway...'
+sudo dnf install sway -y
+echo 'installing sway... done'
 
-# 3. INSTALL MULTIMEDIA SOFTWARE
+# ZSH
+echo 'installing zsh...'
+sudo dnf install zsh -y
+echo 'installing zsh... done'
+
+# 2. INSTALL MULTIMEDIA SOFTWARE
 # -----------------
 
 # SPOTIFY
-echo '=> Installing Spotify...'
+echo 'installing spotify...'
 sudo dnf config-manager --add-repo=http://negativo17.org/repos/fedora-spotify.repo -y
 sudo dnf install spotify-client -y
-echo '=> Done'
+echo 'installing spotify... done'
 
 # VLC
-echo '=> Installing VLC...'
+echo 'installing vlc...'
 sudo dnf install vlc -y
-echo '=> Done'
+echo 'installing vlc... done'
 
-# 4. MISC
+# 3. BROWSERS
 # -----------------
 
-# # FILELIGHT
-# echo '=> Installing Filelight...'
-# sudo dnf install filelight -y
-# echo '=> Done'
-#
-# # GPARTED
-# echo '=> Installing gParted...'
-# sudo dnf install gparted -y
-# echo '=> Done'
-#
-# # UNETBOOTIN
-# echo '=> Installing Unetbootin...'
-# sudo dnf install unetbootin -y
-# echo '=> Done'
-#
-# # SYNAPSE
-# echo '=> Installing Synapse...'
-# sudo dnf install synapse -y
-# echo '=> Done'
-
-# SHELL THEME (ARC)
-echo '=> Installing Arc theme...'
-sudo dnf install arc-theme -y
-echo '=> Done'
-
-# MOKA & FABA ICONS
-echo '=> Installing Moka/Faba icons'
-sudo dnf config-manager --add-repo http://download.opensuse.org/repositories/home:snwh:moka/Fedora_25/home:snwh:moka.repo -y
-sudo dnf install moka-icon-theme -y
-sudo dnf install faba-icon-theme -y
-echo '=> Done'
-
-# GNOME TWEAK TOOL
-echo '=> Installing Moka/Faba icons'
-sudo dnf install gnome-tweak-tool -y
-echo '=> Done'
-
-# 6. BROWSERS
-# -----------------
-
-# FIREFOX DEVELOPER EDITION
-# echo '=> Installing Firefox Developer Edition'
-# curl -L http://git.io/firefoxdev | sh
-# echo '=> Done.'
+# FIREFOX
+echo 'installing firefox...'
+sudo dnf install vlc -y
+echo 'installing firefox... done'
 
 # GOOGLE CHROME
-echo '=> Installing Google Chrome'
-
+echo 'installing chrome...'
 sudo cat << EOF > /etc/yum.repos.d/google-chrome.repo
 [google-chrome]
 name=google-chrome - \$basearch
@@ -136,7 +75,5 @@ enabled=1
 gpgcheck=1
 gpgkey=https://dl-ssl.google.com/linux/linux_signing_key.pub
 EOF
-
 sudo dnf install google-chrome-stable -y
-
-echo '=> Done'
+echo 'installing chrome... done'
