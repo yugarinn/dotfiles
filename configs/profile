@@ -30,6 +30,7 @@ alias cr="cargo run"
 alias ct="cargo test"
 alias fb="firebase"
 alias dea="docker-compose exec app"
+alias domvpn="sudo ip link delete dev wg0 && sudo systemctl start wg-quick@wg0.service"
 
 ZSH_THEME="avit"
 
