@@ -1,7 +1,9 @@
 #!/bin/bash
 
-if ! git --version &> /dev/null
-then
+git --version 2>&1 >/dev/null
+GIT_IS_AVAILABLE=$?
+
+if [ $GIT_IS_AVAILABLE -eq 0 ]; then
   echo 'installing git...'
   sudo dnf install git -y
   echo 'installing git... done'
