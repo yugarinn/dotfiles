@@ -30,6 +30,7 @@ alias cr="cargo run"
 alias ct="cargo test"
 alias fb="firebase"
 alias dea="docker-compose exec app"
+alias domvpn="sudo ip link delete dev wg0 && sudo systemctl start wg-quick@wg0.service"
 
 ZSH_THEME="avit"
 
@@ -54,4 +55,9 @@ random () {
   head /dev/urandom | tr -dc A-Za-z0-9 | head -c $1 ; echo ''
 }
 
-export PATH="$HOME/.cargo/bin:$PATH"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+source "$HOME/.cargo/env"
