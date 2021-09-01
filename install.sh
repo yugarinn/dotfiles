@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if ! git -v &> /dev/null
+if ! git -version &> /dev/null
 then
   echo 'installing git...'
   sudo dnf install git -y
