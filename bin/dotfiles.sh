@@ -4,7 +4,7 @@
 # -----------------
 
 mkdir ~/.emacs.d
-ln -s ~/.dotfiles/configs/emacs.d/* ~/.emacs.d
+ln -s ~/.dotfiles/configs/doom.d/* ~/.doom.d
 ln -s ~/.dotfiles/configs/profile ~/.profile
 ln -s ~/.dotfiles/configs/zshrc ~/.zshrc
 ln -s ~/.dotfiles/configs/tmux ~/.tmux.conf

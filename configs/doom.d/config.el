@@ -64,4 +64,26 @@
 (setq web-mode-script-padding 0)
 (setq web-mode-style-padding 0)
 
+;; JS mode
+(setq js-indent-level 2)
+(setq js2-basic-offset 2)
+
+;; Rust mode
+(defun my/rust-mode-hook()
+  (setq flycheck 1))
+
+;; Hooks
 (add-hook 'web-mode-hook 'my/web-mode-hook)
+(add-hook 'rust-mode-hook 'my/rust-mode-hook)
+
+;; Journal
+(setq org-journal-dir "~/Dropbox/org/journal/")
+
+;; Do not cache non existing file in projectile
+(defadvice! dont-cache-if-file-doesnt-exist-a (&rest _)
+  :before-until #'projectile-cache-files-find-file-hook
+  (and buffer-file-name (file-exists-p buffer-file-name)))
+
+;; FIXME Fix for emacs 27
+;; https://github.com/emacs-lsp/lsp-mode/issues/1778
+(setq lsp-gopls-codelens nil)

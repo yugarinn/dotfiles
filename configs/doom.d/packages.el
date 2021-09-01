@@ -49,4 +49,7 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 
-(package! org-roam)
+(package! rubocop)
+(package! good-scroll)
+(package! company-go)
+(package! lsp-ui)
