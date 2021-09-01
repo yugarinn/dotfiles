@@ -20,17 +20,17 @@ do
         "Install software and update")
             echo "Installing and updating software..."
             sleep 3
-            ~/.dotfiles/bin/bootstrap.sh;
+            ./bin/bootstrap.sh;
             ;;
         "Setup system config")
             echo "Setting up system config..."
             sleep 3
-            ~/.dotfiles/bin/configs.sh;
+            ./bin/configs.sh;
             ;;
         "Setup dotfiles and symlinks")
             echo "Setting up dotfiles and symlinks..."
             sleep 3
-            ~/.dotfiles/bin/dotfiles.sh;
+            ./bin/dotfiles.sh;
             ;;
         "Quit")
             echo "Now that's what I call a dead parrot."
