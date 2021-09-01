@@ -3,7 +3,7 @@
 # DOTFILES
 # -----------------
 
-mkdir ~/.emacs.d
+[[ -d ~/.doom.d ]] || mkdir doom.d
 ln -s ~/.dotfiles/configs/doom.d/* ~/.doom.d
 ln -s ~/.dotfiles/configs/profile ~/.profile
 ln -s ~/.dotfiles/configs/zshrc ~/.zshrc
