@@ -17,17 +17,17 @@ options=("Install software and update" "Setup system config" "Setup dotfiles and
 select opt in "${options[@]}"
 do
     case $opt in
-        "Option 1")
+        "Install software and update")
             echo "Installing and updating software..."
             sleep 3
             ~/.dotfiles/bin/bootstrap.sh;
             ;;
-        "Option 2")
+        "Setup system config")
             echo "Setting up system config..."
             sleep 3
             ~/.dotfiles/bin/configs.sh;
             ;;
-        "Option 3")
+        "Setup dotfiles and symlinks")
             echo "Setting up dotfiles and symlinks..."
             sleep 3
             ~/.dotfiles/bin/dotfiles.sh;
