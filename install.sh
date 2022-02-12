@@ -11,6 +11,8 @@ fi
 
 [[ -d ~/.dotfiles ]] || git clone --depth 1 https://github.com/sergiouve/dotfiles ~/.dotfiles
 
+cd ~/.dotfiles || exit
+
 PS3='Please enter your choice: '
 options=("Install software and update" "Setup system config" "Setup dotfiles and symlinks" "Quit")
 

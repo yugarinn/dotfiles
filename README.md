@@ -3,5 +3,5 @@
 ## Usage
 
 ```shell
-curl -o- https://raw.githubusercontent.com/sergiouve/dotfiles/master/install.sh | bash
+bash <(curl https://raw.githubusercontent.com/sergiouve/dotfiles/master/install.sh)
 ```

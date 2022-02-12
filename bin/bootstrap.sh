@@ -10,6 +10,8 @@ sudo rpm -ivh http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-
 
 # 1. INSTALL MISC SOFTWARE
 # -----------------
+#
+echo 'installing software...'
 
 # GIT
 echo 'installing git...'
