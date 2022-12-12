@@ -95,32 +95,34 @@
 ;; Coffe Mode
 (custom-set-variables '(coffee-tab-width 2))
 
-;; Company
-(set-company-backend! '(c-mode
-                        c++-mode
-                        ess-mode
-                        haskell-mode
-                        ;; emacs-lisp-mode
-                        conf-mode
-                        lisp-mode
-                        sh-mode
-                        php-mode
-                        python-mode
-                        go-mode
-                        ruby-mode
-                        rust-mode
-                        js-mode
-                        css-mode
-                        web-mode
-                        nix-mode
-                        json-mode
-                        )
-  '(
-    company-tabnine
-    :separate
-    company-capf
-    ))
+;; Ivy
+(require 'ivy-posframe)
 
-(setq +lsp-company-backends '(company-tabnine
-                              :separate
-                              company-capf))
+(ivy-posframe-mode 1)
+
+;; Hack so posframe is shown in big projects
+;; I couldnt find the proper function to bind
+(setq ivy-sort-max-size 30000)
+
+(setq ivy-posframe-display-functions-alist
+      '((counsel-find-file            . ivy-posframe-display-at-frame-center )
+        (counsel-projectile-find-file . ivy-posframe-display-at-frame-center)
+        (counsel-file-jump            . ivy-posframe-display-at-frame-center)
+        (projectile-find-file         . ivy-posframe-display-at-frame-center)
+        (ivy-switch-buffer            . ivy-posframe-display-at-frame-center)
+        (counsel-M-x                  . ivy-posframe-display-at-frame-center)
+        (t                            . ivy-display-function-fallback)))
+
+(setq ivy-posframe-height-alist '((t . 25)))
+
+(setq ivy-posframe-width 130)
+(setq ivy-posframe-border-width 9)
+
+(set-face-attribute 'ivy-posframe nil
+                    :foreground "#BFBFBF"
+                    :background "#1C1E24")
+
+(ivy-posframe-mode 1)
+
+;; Speed up ivy fuzzy results
+(setq gc-cons-threshold 20000000)

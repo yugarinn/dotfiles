@@ -41,7 +41,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec mate-terminal
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+q kill
@@ -182,7 +182,7 @@ bindsym $mod+r mode "resize"
 #}
 
 bar {
-    position top
+    position bottom
     font "Terminus (TTF)"
     status_command while ~/.dotfiles/swaybar.sh; do sleep 1; done
 
@@ -193,26 +193,23 @@ bar {
     }
 }
 
-# Gaps and such
-for_window [class="^.*"] border pixel 3
+# Gaps
+for_window [class="^.*"] border pixel 2
 gaps outer 3
 gaps inner 10
 
-# Laptot lid
-exec swaymsg output eDP-1 disable
-exec swaymsg bindswitch lid:on output eDP-1 disable
-exec swaymsg bindswitch lid:off output eDP-1 enable
+# Monitors
+output DP-3 pos 0 0
+output HDMI-A-1 pos 1920 0
 
 # Keyboard
-input * xkb_layout "es"
 input * xkb_options "caps:escape"
 
 # Screen lock
 bindsym $mod+Ctrl+l exec /usr/local/bin/lock
 
 # Wallpaper
-exec swaymsg output "*" bg "/home/sergio/Pictures/wallpaper/gnome.jpg" fill
-exec swaymsg output eDP-1 res 1920x1081920x1080
+exec swaymsg output "*" bg "/home/sergiouve/Pictures/wallpapers/interior.jpg" fill
 
 # Add Gnome prompt for GUI root auth
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
