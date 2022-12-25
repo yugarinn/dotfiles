@@ -95,44 +95,12 @@
 ;; Coffe Mode
 (custom-set-variables '(coffee-tab-width 2))
 
-;; Ivy
-(require 'ivy-posframe)
+;; Vertico
+(setq vertico-posframe-min-height 30)
 
-(ivy-posframe-mode 1)
-
-;; Hack so posframe is shown in big projects
-;; I couldnt find the proper function to bind
-(setq ivy-sort-max-size 30000)
-
-(setq ivy-posframe-display-functions-alist
-      '((counsel-find-file            . ivy-posframe-display-at-frame-center )
-        (counsel-projectile-find-file . ivy-posframe-display-at-frame-center)
-        (counsel-file-jump            . ivy-posframe-display-at-frame-center)
-        (projectile-find-file         . ivy-posframe-display-at-frame-center)
-        (ivy-switch-buffer            . ivy-posframe-display-at-frame-center)
-        (counsel-M-x                  . ivy-posframe-display-at-frame-center)
-        (t                            . ivy-display-function-fallback)))
-
-(setq ivy-posframe-height-alist '((t . 25)))
-
-(setq ivy-posframe-width 150)
-(setq ivy-posframe-border-width 1)
-
-(set-face-attribute 'ivy-posframe nil
-                    :foreground "#BFBFBF"
-                    :background "#23272E")
-
-(set-face-attribute 'ivy-posframe-border nil
-                    :background "#3f444A")
-
-(setq ivy-posframe-parameters
-      '((left-fringe . 5)
-        (right-fringe . 5)))
-
-(ivy-posframe-mode 1)
-
-;; Speed up ivy fuzzy results
-(setq gc-cons-threshold 20000000)
+(setq vertico-posframe-parameters
+      '((left-fringe . 2)
+        (right-fringe . 2)))
 
 ;; Tabnine
 (after! company

@@ -23,10 +23,11 @@
        company           ; the ultimate code completion backend
        ;;helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
-       (ivy
-        +childframe
-        +fuzzy
-        +prescient)               ; a search engine for love and life
+       (vertico +childframe)           ; the search engine of the future
+       ;; (ivy
+       ;;  +childframe
+       ;;  +fuzzy
+       ;;  +prescient)               ; a search engine for love and life
 
        :ui
        ;;deft              ; notational velocity for Emacs
@@ -163,7 +164,7 @@
        (ruby
         +rails
         +lsp)     ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
-       rust              ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
+       (rust +lps)              ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
        ;;scala             ; java, but good
        ;;scheme            ; a fully conniving family of lisps
        sh                ; she sells {ba,z,fi}sh shells on the C xor
