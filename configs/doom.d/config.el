@@ -115,14 +115,55 @@
 
 (setq ivy-posframe-height-alist '((t . 25)))
 
-(setq ivy-posframe-width 130)
-(setq ivy-posframe-border-width 9)
+(setq ivy-posframe-width 150)
+(setq ivy-posframe-border-width 1)
 
 (set-face-attribute 'ivy-posframe nil
                     :foreground "#BFBFBF"
-                    :background "#1C1E24")
+                    :background "#23272E")
+
+(set-face-attribute 'ivy-posframe-border nil
+                    :background "#3f444A")
+
+(setq ivy-posframe-parameters
+      '((left-fringe . 5)
+        (right-fringe . 5)))
 
 (ivy-posframe-mode 1)
 
 ;; Speed up ivy fuzzy results
 (setq gc-cons-threshold 20000000)
+
+;; Tabnine
+(after! company
+  (add-to-list 'company-backends #'company-tabnine)
+
+  (set-company-backend! '(c-mode
+                          c++-mode
+                          ess-mode
+                          haskell-mode
+                          emacs-lisp-mode
+                          conf-mode
+                          lisp-mode
+                          sh-mode
+                          php-mode
+                          python-mode
+                          go-mode
+                          ruby-mode
+                          rust-mode
+                          js-mode
+                          css-mode
+                          web-mode
+                          nix-mode
+                          json-mode
+                          )
+    '(
+      company-tabnine
+      :separate
+      company-capf
+      ))
+
+  (setq +lsp-company-backends '(company-tabnine :separate company-capf))
+  (setq company-show-quick-access t)
+  (setq company-idle-delay 0)
+)
