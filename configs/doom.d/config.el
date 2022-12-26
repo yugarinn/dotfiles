@@ -31,8 +31,6 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/Dropbox/org/")
-(setq org-roam-directory "~/Dropbox/org/roam/")
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -65,6 +63,8 @@
 (setq web-mode-script-padding 0)
 (setq web-mode-style-padding 0)
 
+(add-hook 'web-mode-hook 'my/web-mode-hook)
+
 ;; JS mode
 (setq js-indent-level 2)
 (setq js2-basic-offset 2)
@@ -73,11 +73,10 @@
 (defun my/rust-mode-hook()
   (setq flycheck 1))
 
-;; Hooks
-(add-hook 'web-mode-hook 'my/web-mode-hook)
 (add-hook 'rust-mode-hook 'my/rust-mode-hook)
 
-;; Journal
+;; Org
+(setq org-directory "~/Dropbox/org/")
 (setq org-journal-dir "~/Dropbox/org/journal/")
 
 ;; Do not cache non existing file in projectile
@@ -96,8 +95,9 @@
 (custom-set-variables '(coffee-tab-width 2))
 
 ;; Vertico
-(setq vertico-posframe-height 30)
-(setq vertico-count 30)
+(after! vertico
+  (setq vertico-posframe-height 30)
+  (setq vertico-count 30))
 
 (setq vertico-posframe-parameters
       '((left-fringe . 2)
