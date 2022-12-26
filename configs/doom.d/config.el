@@ -96,7 +96,8 @@
 (custom-set-variables '(coffee-tab-width 2))
 
 ;; Vertico
-(setq vertico-posframe-min-height 30)
+(setq vertico-posframe-height 30)
+(setq vertico-count 30)
 
 (setq vertico-posframe-parameters
       '((left-fringe . 2)
