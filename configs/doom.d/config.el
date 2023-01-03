@@ -22,7 +22,7 @@
 (setq doom-font (font-spec :family "Source Code Pro" :size 11)
       doom-variable-pitch-font (font-spec :family "Source Code Pro" :size 12))
 ;; Big font mode
-(setq doom-big-font (font-spec :family "Source Code Pro" :size 21))
+(setq doom-big-font (font-spec :family "Source Code Pro" :size 19))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -134,5 +134,10 @@
 
   (setq +lsp-company-backends '(company-tabnine :separate company-capf))
   (setq company-show-quick-access t)
-  (setq company-idle-delay 0)
+  (setq company-idle-delay 1)
 )
+
+;; Modus Themes
+(after! modus-themes
+  (setq modus-themes-tabs-accented t)
+  (setq modus-themes-mode-line '(borderless)))
