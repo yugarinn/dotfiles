@@ -95,11 +95,12 @@
 
 ;; Treemacs
 (after! treemacs
-  (treemacs-add-and-display-current-project-exclusively)
-  (treemacs-project-follow-mode 1)
-  (treemacs-follow-mode 1)
-  (treemacs-git-mode 'deferred)
-  (setq treemacs-width 45))
+  (treemacs-add-and-display-current-project-exclusively))
+
+(treemacs-project-follow-mode 1)
+(treemacs-follow-mode 1)
+(treemacs-git-mode 'deferred)
+(setq treemacs-width 45)
 
 ;; Web mode
 (defun my/web-mode-hook ()
