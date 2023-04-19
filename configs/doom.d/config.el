@@ -117,6 +117,15 @@
 ;; JS mode
 (setq js-indent-level 2)
 (setq js2-basic-offset 2)
+(setq typescript-indent-level 2)
+
+;; TS mode
+(defun my/typescript-mode-hook()
+  (setq js-indent-level 2)
+  (setq js2-basic-offset 2)
+  (setq typescript-indent-level 2))
+
+(add-hook 'typescript-mode-hook 'my/typescript-mode-hook)
 
 ;; Rust mode
 (defun my/rust-mode-hook()
@@ -132,3 +141,13 @@
 ;; Coffe Mode
 (custom-set-variables '(coffee-tab-width 2))
 
+;; Olivetti
+(defun my/olivetti-mode-hook()
+ (setq olivetti-body-width 120))
+
+(add-hook 'olivetti-mode-hook 'my/olivetti-mode-hook)
+
+;; Markdown
+(defun my/markdown-mode-hook()
+  (display-line-numbers-mode 0)
+  'olivetti-mode)
