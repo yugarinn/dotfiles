@@ -29,7 +29,6 @@ alias ct="cargo test"
 alias fb="firebase"
 alias dea="docker-compose exec app"
 alias domvpn="sudo ip link delete dev wg0 && sudo systemctl start wg-quick@wg0.service"
-alias exercism="~/bin/exercism"
 alias vim="nvim"
 alias start_screen_share="/usr/libexec/xdg-desktop-portal -r & /usr/libexec/xdg-desktop-portal-wlr & > /dev/null"
 
