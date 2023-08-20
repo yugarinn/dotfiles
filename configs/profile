@@ -55,17 +55,12 @@ random () {
   head /dev/urandom | tr -dc A-Za-z0-9 | head -c $1 ; echo ''
 }
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 . "$HOME/.cargo/env"
 
 export PATH=$PATH:/usr/local/go/bin
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 # CONFIG
 # ------------
@@ -90,3 +85,6 @@ export XDG_CURRENT_DESKTOP="sway"
 
 export BROWSER="firefox"
 export GOPATH="/home/sergiouve/.go"
+export PATH="$PATH:/home/sergiouve/bin/flutter/bin"
+export PATH="$PATH:/home/sergiouve/bin"
+export PATH="$PATH:/home/sergiouve/local/bin"

@@ -3,14 +3,13 @@
 # Directories
 echo 'creating directories...'
 mkdir ~/Temp
-mkdir ~/Scripts
 mkdir ~/code
 echo 'creating directories... done'
 
 # Git user
 echo 'setting git name and email'
-git config --global user.name "Sergio Uve"
-git config --global user.email "sergiouve@gmail.com"
+git config --global user.name "yugarinn"
+git config --global user.email "yugarinn@proton.me"
 echo 'setting git name and email... done'
 
 # oh-my-zsh

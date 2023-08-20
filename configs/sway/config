@@ -132,7 +132,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your X session.' -B 'Yes, exit' 'i3-msg exit'"
+bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your X session.' -B 'Yes, exit' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -172,8 +172,15 @@ default_border pixel 2
 input type:keyboard {
       xkb_layout us
       xkb_variant ,intl
-      xkb_options caps:escape,compose:ralt
+      xkb_options caps:escape,altwin:ralt,compose:ralt
 }
+
+bindsym $mod+Shift+n exec wtype "ñ"
+bindsym $mod+Shift+a exec wtype "á"
+bindsym $mod+Shift+e exec wtype "é"
+bindsym $mod+Shift+i exec wtype "í"
+bindsym $mod+Shift+o exec wtype "ó"
+bindsym $mod+Shift+u exec wtype "ú"
 
 # Screen lock
 bindsym $mod+Ctrl+l exec "swaylock \
@@ -183,7 +190,7 @@ bindsym $mod+Ctrl+l exec "swaylock \
         --fade-in 0.2"
 
 # Wallpaper
-exec_always swaymsg output "*" bg "/home/sergiouve/Pictures/wallpapers/interior.jpg" fill
+exec_always swaymsg output "*" bg "~/.dotfiles/assets/wallpapers/interior.jpg" fill
 
 # Workspaces binding
 exec_always swaymsg output HDMI-A-1 pos 0 0 res 1920x1080
@@ -196,6 +203,9 @@ exec_always swaymsg workspace 5 output DP-1
 exec_always swaymsg workspace 6 output DP-1
 exec_always swaymsg workspace 7 output DP-1
 exec_always swaymsg workspace 8 output DP-1
+exec_always swaymsg workspace 9 output HDMI-A-1
+
+
 exec_always swaymsg workspace 9 output HDMI-A-1
 
 # Add Gnome prompt for GUI root auth

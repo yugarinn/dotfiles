@@ -5,9 +5,10 @@
       user-mail-address "yugarinn@proton.me")
 
 ;; Fonts
+;; Source Code Pro
 (setq doom-font (font-spec :family "Source Code Pro" :size 12)
       doom-variable-pitch-font (font-spec :family "Source Code Pro" :size 12 :weight 'semi-bold))
-(setq doom-big-font (font-spec :family "Source Code Pro" :size 19))
+(setq doom-big-font (font-spec :family "Source Code Pro" :size 17))
 
 ;; UI
 (setq doom-theme 'doom-one)
@@ -19,6 +20,51 @@
 ;; Modeline
 (setq doom-modeline-vcs-max-length 120)
 (setq doom-modeline-modal-icon nil)
+
+;; Vertico file preview
+;; (defvar my-file-preview-posframe-buffer " *file-preview-posframe-buffer*")
+
+;; (defun my-show-file-preview (file)
+;;   "Show file preview in a posframe at the bottom right."
+;;   (let ((content (with-temp-buffer
+;;                    (insert-file-contents file nil 0 1000)
+;;                    (buffer-string))))
+;;     (posframe-show " *file-preview-posframe-buffer*"
+;;                    :string content
+;;                    :position '(-1 . -1)  ; This will place it at the bottom right corner
+;;                    :left-fringe 8
+;;                    :right-fringe 8
+;;                    :width 80
+;;                    :height 30
+;;                    :override-parameters '((bottom-divider-width . 0) (right-divider-width . 0)))))
+
+;; (defun my-hide-file-preview ()
+;;   "Hide the file preview posframe."
+;;   (posframe-hide my-file-preview-posframe-buffer))
+
+;; (defun my-vertico-show-file-preview ()
+;;   "Show file preview in a posframe during Vertico completion."
+;;   (when-let ((file (and vertico--index
+;;                         (nth vertico--index vertico--candidates))))
+;;     (message "Selected file: %s" file)
+;;     (my-show-file-preview file)))
+
+;; (defun my-vertico-preview-setup ()
+;;   (message "Post-command in Vertico")
+;;   "Setup for file previews during Vertico completion."
+;;   (add-hook 'post-command-hook #'my-vertico-show-file-preview nil t))
+
+;; (defun my-vertico-preview-cleanup ()
+;;   "Clean up file previews when Vertico session ends."
+;;   (posframe-delete " *file-preview-posframe-buffer*")
+;;   (remove-hook 'post-command-hook #'my-vertico-show-file-preview t))
+
+;; (defun my-conditional-vertico-setup ()
+;;   (when (bound-and-true-p vertico-mode)
+;;     (my-vertico-preview-setup)))
+
+;; (add-hook 'minibuffer-setup-hook #'my-conditional-vertico-setup)
+;; (add-hook 'minibuffer-exit-hook #'my-vertico-preview-cleanup)
 
 ;; Vertico
 (after! vertico
@@ -75,7 +121,7 @@
 
   (setq +lsp-company-backends '(company-tabnine :separate company-capf))
   (setq company-show-quick-access t)
-  (setq company-idle-delay 1)
+  (setq company-idle-delay 0.3)
 )
 
 ;; Modus Themes
@@ -94,15 +140,15 @@
                            (linum-mode -1)))
 
 ;; Treemacs
-(after! treemacs
-  (treemacs-add-and-display-current-project-exclusively))
+;; (after! treemacs
+;;   (treemacs-add-and-display-current-project-exclusively))
 
-(treemacs-project-follow-mode 1)
-(treemacs-follow-mode 1)
-(treemacs-git-mode 'deferred)
+;; (treemacs-project-follow-mode 1)
+;; (treemacs-follow-mode 1)
+;; (treemacs-git-mode 'deferred)
 (setq treemacs-width 45)
 
-;; Web mode
+;; ;; Web mode
 (defun my/web-mode-hook ()
   (setq web-mode-markup-indent-offset 4
         web-mode-code-indent-offset 2
