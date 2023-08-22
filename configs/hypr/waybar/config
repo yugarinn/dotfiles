@@ -1,0 +1,61 @@
+{
+    "layer": "bottom",
+    "position": "bottom",
+    "margin-left": 10,
+    "margin-top": 0,
+    "margin-right": 10,
+    "margin-bottom": 10,
+    "height": 25,
+    "modules-left": ["wlr/workspaces"],
+    "modules-center": ["hyprland/window"],
+    "modules-right": ["tray", "temperature", "pulseaudio", "clock"],
+     "wlr/workspaces": {
+         "disable-scroll": true,
+         "all-outputs": false,
+         "format": "{icon}",
+         "on-click": "activate"
+     },
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10
+    },
+    "clock": {
+        "format": "|  {:%A %e %B %Y %H:%M}",
+        "tooltip": false
+    },
+    "cpu": {
+        "interval": 5,
+        "format": "⚙ {}%  ",
+        "max-length": 10
+    },
+    "memory": {
+        "interval": 5,
+        "format": " {}%  |",
+        "max-length": 10
+    },
+    "temperature": {
+        "format": "  |   {temperatureC}°C"
+    },
+    "pulseaudio": {
+        "format": "  {volume}% {icon}",
+        "format-bluetooth": "  {volume}% {icon} ",
+        "format-muted": "   -",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", ""]
+        },
+        "scroll-step": 1,
+        "on-click": "pavucontrol"
+    },
+    "sway/window": {
+        "tooltip": false
+    }
+}

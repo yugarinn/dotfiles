@@ -9,7 +9,7 @@ if [ $GIT_IS_AVAILABLE -ne 0 ]; then
   echo 'installing git... done'
 fi
 
-[[ -d ~/.dotfiles ]] || git clone --depth 1 https://github.com/sergiouve/dotfiles ~/.dotfiles
+[[ -d ~/.dotfiles ]] || git clone --depth 1 https://github.com/yugarinn/dotfiles ~/.dotfiles
 
 cd ~/.dotfiles || exit
 

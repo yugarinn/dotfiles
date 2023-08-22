@@ -6,8 +6,8 @@
 
 ;; Fonts
 ;; Source Code Pro
-(setq doom-font (font-spec :family "Source Code Pro" :size 10)
-      doom-variable-pitch-font (font-spec :family "Source Code Pro" :size 10 :weight 'semi-bold))
+(setq doom-font (font-spec :family "Source Code Pro" :size 11)
+      doom-variable-pitch-font (font-spec :family "Source Code Pro" :size 11 :weight 'semi-bold))
 (setq doom-big-font (font-spec :family "Source Code Pro" :size 17))
 
 ;; UI
