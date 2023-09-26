@@ -14,7 +14,6 @@ dnf_packages=(
   swaybg
   tmux
   vim
-  wayland
   zsh
 )
 
