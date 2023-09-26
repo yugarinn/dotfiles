@@ -21,12 +21,15 @@ do
     case $opt in
         "Setup dotfiles")
             ./bin/dotfiles.sh;
+            echo "Done!"
             ;;
         "Install dependencies")
             ./bin/bootstrap.sh;
+            echo "Done!"
             ;;
         "Setup config")
             ./bin/configs.sh;
+            echo "Done!"
             ;;
         "Quit")
             echo "Now that's what I call a dead parrot."
