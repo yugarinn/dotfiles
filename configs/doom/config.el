@@ -7,7 +7,7 @@
 ;; Fonts
 ;; Source Code Pro
 (defvar regular-font-size
-  (cond ((string-equal (system-name) "soyuz1") 10)
+  (cond ((string-equal (system-name) "soyuz1") 11)
         ((string-equal (system-name) "vostok1") 12)
         (t 10)))
 
@@ -23,9 +23,6 @@
 ;; UI
 (setq doom-theme 'doom-one)
 (setq display-line-numbers-type 'relative)
-
-(add-to-list 'initial-frame-alist '(fullscreen . maximized))
-(add-hook 'window-setup-hook #'toggle-frame-maximized)
 
 ;; Modeline
 (setq doom-modeline-vcs-max-length 120)
