@@ -6,7 +6,7 @@
     "margin-right": 10,
     "margin-bottom": 10,
     "height": 25,
-    "modules-center": ["wlr/workspaces"],
+    "modules-center": ["hyprland/workspaces"],
     "modules-left": ["hyprland/window"],
     "modules-right": ["tray", "temperature", "pulseaudio", "clock"],
      "wlr/workspaces": {
