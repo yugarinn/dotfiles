@@ -3,7 +3,7 @@
 # DOTFILES
 # -----------------
 
-ln -s ~/.dotfiles/configs/hypr/hyprland.config ~/.config/hypr/hyprland.config
+ln -s ~/.dotfiles/configs/hypr/hyprland.config ~/.config/hypr/hyprland.conf
 ln -s ~/.dotfiles/configs/hypr/waybar ~/.config/waybar
 
 ln -s ~/.dotfiles/configs/doom ~/.config/doom

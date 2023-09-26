@@ -11,3 +11,10 @@ git checkout tags/emacs-29.1 29.1
 
 make -j$(nproc)
 make install
+
+cd -
+rm -rf emacs
+
+# Doom
+git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
+~/.config/emacs/bin/doom install
