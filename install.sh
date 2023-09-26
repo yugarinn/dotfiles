@@ -14,11 +14,17 @@ fi
 cd ~/.dotfiles || exit
 
 PS3='Please enter your choice: '
-options=("Install software and update" "Setup system config" "Setup dotfiles and symlinks" "Quit")
+options=("Setup dotfiles" "Setup config" "Install dependencies" "Quit")
 
 select opt in "${options[@]}"
 do
     case $opt in
+        "Setup dotfiles and symlinks")
+            echo "Setting up dotfiles and symlinks..."
+            sleep 3
+            ./bin/dotfiles.sh;
+            ;;
+
         "Install software and update")
             echo "Installing and updating software..."
             sleep 3
@@ -28,11 +34,6 @@ do
             echo "Setting up system config..."
             sleep 3
             ./bin/configs.sh;
-            ;;
-        "Setup dotfiles and symlinks")
-            echo "Setting up dotfiles and symlinks..."
-            sleep 3
-            ./bin/dotfiles.sh;
             ;;
         "Quit")
             echo "Now that's what I call a dead parrot."
