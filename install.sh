@@ -19,20 +19,13 @@ options=("Setup dotfiles" "Setup config" "Install dependencies" "Quit")
 select opt in "${options[@]}"
 do
     case $opt in
-        "Setup dotfiles and symlinks")
-            echo "Setting up dotfiles and symlinks..."
-            sleep 3
+        "Setup dotfiles")
             ./bin/dotfiles.sh;
             ;;
-
-        "Install software and update")
-            echo "Installing and updating software..."
-            sleep 3
+        "Install dependencies")
             ./bin/bootstrap.sh;
             ;;
-        "Setup system config")
-            echo "Setting up system config..."
-            sleep 3
+        "Setup config")
             ./bin/configs.sh;
             ;;
         "Quit")
