@@ -30,3 +30,8 @@ sudo dnf install -y "${dnf_packages[@]}"
 
 # Installing from Flathub
 flatpak install flathub "${flatpak_packages[@]}" -y
+
+# Installing Gnome Extensions
+rm -f ./install-gnome-extensions.sh; wget -N -q "https://raw.githubusercontent.com/ToasterUwU/install-gnome-extensions/master/install-gnome-extensions.sh" -O ./install-gnome-extensions.sh && chmod +x install-gnome-extensions.sh
+./install-gnome-extensions.sh --enable 277 517 3193 1460 2890 973 # impatience, caffeine, blur-my-shell, vitals, tray-icons-reloaded, switcher
+rm -f ./install-gnome-extensions.sh
