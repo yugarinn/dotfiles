@@ -11,7 +11,7 @@ git config --global user.email "yugarinn@proton.me"
 echo 'setting git name and email... done'
 
 echo 'setting up oh my zsh...'
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 echo 'setting up oh my zsh... done'
 
 echo 'loading gnome configuration...'
