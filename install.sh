@@ -14,27 +14,46 @@ fi
 cd ~/.dotfiles || exit
 
 PS3='Please enter your choice: '
-options=("Setup dotfiles" "Setup config" "Install dependencies" "Quit")
+options=("Do all" "Setup dotfiles" "Setup config" "Install dependencies" "Quit")
 
-select opt in "${options[@]}"
-do
-    case $opt in
-        "Setup dotfiles")
-            ./bin/dotfiles.sh;
-            echo "Done!"
-            ;;
-        "Install dependencies")
-            ./bin/bootstrap.sh;
-            echo "Done!"
-            ;;
-        "Setup config")
-            ./bin/configs.sh;
-            echo "Done!"
-            ;;
-        "Quit")
-            echo "Now that's what I call a dead parrot."
-            break
-            ;;
-        *) echo "invalid option $REPLY";;
-    esac
+while true; do
+  clear
+  echo "Please choose an option:"
+  select opt in "${options[@]}"; do
+      case $opt in
+          "Do all")
+              ./bin/dotfiles.sh;
+              ./bin/bootstrap.sh;
+              ./bin/configs.sh;
+              ./bin/emacs.sh;
+              echo "Done!"
+              break
+              ;;
+          "Setup dotfiles")
+              ./bin/dotfiles.sh;
+              echo "Done!"
+              break
+              ;;
+          "Install dependencies")
+              ./bin/bootstrap.sh;
+              echo "Done!"
+              break
+              ;;
+          "Setup config")
+              ./bin/configs.sh;
+              echo "Done!"
+              break
+              ;;
+          "Setup emacs")
+              ./bin/emacs.sh;
+              echo "Done!"
+              break
+              ;;
+          "Quit")
+              echo "Now that's what I call a dead parrot."
+              exit
+              ;;
+          *) echo "Invalid option: $REPLY"; break;;
+      esac
+  done
 done
