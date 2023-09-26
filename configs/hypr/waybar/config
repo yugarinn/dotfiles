@@ -6,8 +6,8 @@
     "margin-right": 10,
     "margin-bottom": 10,
     "height": 25,
-    "modules-center": ["hyprland/workspaces"],
-    "modules-left": ["hyprland/window"],
+    "modules-left": ["hyprland/workspaces"],
+    "modules-center": ["hyprland/window"],
     "modules-right": ["tray", "temperature", "pulseaudio", "clock"],
      "wlr/workspaces": {
          "disable-scroll": true,

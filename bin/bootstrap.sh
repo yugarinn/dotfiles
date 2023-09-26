@@ -13,6 +13,7 @@ dnf_packages=(
   pavucontrol
   swaybg
   tmux
+  util-linux-user
   vim
   waybar
   zsh
