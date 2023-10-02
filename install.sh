@@ -50,6 +50,7 @@ while true; do
               break
               ;;
           "Quit")
+              chsh -s $(which zsh)
               echo "Now that's what I call a dead parrot."
               exit
               ;;

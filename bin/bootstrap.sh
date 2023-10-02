@@ -22,6 +22,7 @@ dnf_packages=(
 flatpak_packages=(
   com.spotify.Client
   md.obsidian.Obsidian
+  org.gnome.Extensions
   org.mozilla.Thunderbird
 )
 
