@@ -136,7 +136,7 @@
        ;;(java +meghanada) ; the poster child for carpal tunnel syndrome
        javascript          ; all(hope(abandon(ye(who(enter(here))))))
        ;;julia             ; a better, faster MATLAB
-       ;;kotlin            ; a better, slicker Java(Script)
+       kotlin              ; a better, slicker Java(Script)
        ;;latex             ; writing papers in Emacs has never been so fun
        ;;lean
        ;;factor
@@ -147,7 +147,7 @@
        ;;nix               ; I hereby declare "nix geht mehr!"
        ;;ocaml             ; an objective camel
        org                 ; organize your plain life in plain text
-       php                 ; perl's insecure younger brother
+       (php +lsp)          ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional
        ;;python            ; beautiful is better than ugly
@@ -159,13 +159,13 @@
        (ruby
         +rails
         +lsp)              ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
-       (rust +lps)         ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
+       (rust +lsp)         ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
        scala               ; java, but good
        ;;scheme            ; a fully conniving family of lisps
        sh                  ; she sells {ba,z,fi}sh shells on the C xor
        ;;sml
        ;;solidity          ; do you need a blockchain? No.
-       ;;swift             ; who asked for emoji variables?
+       swift               ; who asked for emoji variables?
        ;;terra             ; Earth and Moon in alignment for performance.
        web                 ; the tubes
        yaml                ; JSON, but readable

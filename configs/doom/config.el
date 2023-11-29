@@ -5,7 +5,6 @@
       user-mail-address "yugarinn@proton.me")
 
 ;; Fonts
-;; Source Code Pro
 (defvar regular-font-size
   (cond ((string-equal (system-name) "soyuz1") 11)
         ((string-equal (system-name) "vostok1") 12)
@@ -52,39 +51,14 @@
   (nconc (seq-filter (lambda (x) (string-suffix-p "/" x)) files)
          (seq-remove (lambda (x) (string-suffix-p "/" x)) files)))
 
-;; Tabnine
-(after! company
-  (add-to-list 'company-backends #'company-tabnine)
+;; Do not cache non existing file in projectile
+(defadvice! dont-cache-if-file-doesnt-exist-a (&rest _)
+  :before-until #'projectile-cache-files-find-file-hook
+  (and buffer-file-name (file-exists-p buffer-file-name)))
 
-  (set-company-backend! '(c-mode
-                          c++-mode
-                          ess-mode
-                          haskell-mode
-                          emacs-lisp-mode
-                          conf-mode
-                          lisp-mode
-                          sh-mode
-                          php-mode
-                          python-mode
-                          go-mode
-                          ruby-mode
-                          rust-mode
-                          js-mode
-                          css-mode
-                          web-mode
-                          nix-mode
-                          json-mode
-                          )
-    '(
-      company-tabnine
-      :separate
-      company-capf
-      ))
-
-  (setq +lsp-company-backends '(company-tabnine :separate company-capf))
-  (setq company-show-quick-access t)
-  (setq company-idle-delay 0.3)
-)
+;; Company
+(setq company-show-quick-access t)
+(setq company-idle-delay 0.3)
 
 ;; Modus Themes
 (after! modus-themes
@@ -134,11 +108,6 @@
   (setq flycheck 1))
 
 (add-hook 'rust-mode-hook 'my/rust-mode-hook)
-
-;; Do not cache non existing file in projectile
-(defadvice! dont-cache-if-file-doesnt-exist-a (&rest _)
-  :before-until #'projectile-cache-files-find-file-hook
-  (and buffer-file-name (file-exists-p buffer-file-name)))
 
 ;; Coffe Mode
 (custom-set-variables '(coffee-tab-width 2))
