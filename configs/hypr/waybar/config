@@ -28,7 +28,7 @@
     },
     "cpu": {
         "interval": 5,
-        "format": "⚙ {}%  ",
+        "format": "⚙ {}%  ",
         "max-length": 10
     },
     "memory": {

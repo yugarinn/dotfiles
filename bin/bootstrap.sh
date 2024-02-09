@@ -11,6 +11,7 @@ dnf_packages=(
   hyprland
   mako
   pavucontrol
+  steam
   swaybg
   tmux
   util-linux-user
@@ -20,10 +21,12 @@ dnf_packages=(
 )
 
 flatpak_packages=(
+  com.discordapp.Discord
   com.spotify.Client
   md.obsidian.Obsidian
   org.gnome.Extensions
   org.mozilla.Thunderbird
+  io.dbeaver.DBeaverCommunity
 )
 
 sudo dnf upgrade -y

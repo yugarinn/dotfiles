@@ -15,5 +15,5 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 echo 'setting up oh my zsh... done'
 
 echo 'loading gnome configuration...'
-dconf load / < ./configs/gnome-dconf-settings.ini
+dconf load / < ./configs/gnome-dconf-settings.ini || echo 'error loading gnome configuration.'
 echo 'loading gnome configuration...'
