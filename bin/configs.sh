@@ -15,5 +15,9 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 echo 'setting up oh my zsh... done'
 
 echo 'loading gnome configuration...'
-dconf load / < ./configs/gnome-dconf-settings.ini || echo 'error loading gnome configuration.'
-echo 'loading gnome configuration...'
+dconf load / < ./configs/gnome-dconf-settings.ini || echo 'loading gnome configuration... error'
+echo 'loading gnome configuration... done'
+
+echo 'installing atuin...'
+bash <(curl --proto '=https' --tlsv1.2 -sSf https://setup.atuin.sh)
+echo 'installing atuin... done'

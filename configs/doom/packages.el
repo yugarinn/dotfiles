@@ -53,7 +53,6 @@
 (package! company-go)
 (package! lsp-ui)
 (package! feature-mode)
-(package! company-tabnine)
 (package! coffee-mode)
 (package! olivetti)
 
