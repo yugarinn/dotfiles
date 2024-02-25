@@ -29,7 +29,6 @@ alias ct="cargo test"
 alias fb="firebase"
 alias dea="docker-compose exec app"
 alias domvpn="sudo ip link delete dev wg0 && sudo systemctl start wg-quick@wg0.service"
-alias vim="nvim"
 alias start_screen_share="/usr/libexec/xdg-desktop-portal -r & /usr/libexec/xdg-desktop-portal-wlr & > /dev/null"
 
 ZSH_THEME="avit"
@@ -84,7 +83,7 @@ export XDG_SESSION_TYPE="wayland"
 export XDG_CURRENT_DESKTOP="sway"
 
 export BROWSER="firefox"
-export GOPATH="/home/sergiouve/.go"
 export PATH="$PATH:/home/sergiouve/bin/flutter/bin"
 export PATH="$PATH:/home/sergiouve/bin"
 export PATH="$PATH:/home/sergiouve/local/bin"
+export PATH=$PATH:/usr/local/go/bin

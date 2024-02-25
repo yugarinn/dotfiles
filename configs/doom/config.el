@@ -6,7 +6,7 @@
 
 ;; Fonts
 (defvar regular-font-size
-  (cond ((string-equal (system-name) "soyuz1") 11)
+  (cond ((string-equal (system-name) "soyuz2") 11)
         ((string-equal (system-name) "vostok1") 12)
         (t 10)))
 

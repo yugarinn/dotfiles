@@ -8,6 +8,7 @@ sudo dnf copr enable solopasha/hyprland -y
 
 dnf_packages=(
   alacritty
+  grimshot
   hyprland
   mako
   pavucontrol
@@ -16,7 +17,9 @@ dnf_packages=(
   tmux
   util-linux-user
   vim
+  vlc
   waybar
+  wtype
   zsh
 )
 

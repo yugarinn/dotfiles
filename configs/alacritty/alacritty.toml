@@ -39,7 +39,7 @@ dim_foreground = "0xdbdbdb"
 foreground = "0xd6d6d6"
 
 [font]
-size = 9
+size = 7.7
 
 [font.normal]
 family = "Inconsolata"
