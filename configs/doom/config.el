@@ -40,7 +40,10 @@
 
 ;; Sorting folders before files and by alpha order on find-file buffer
 (setq vertico-multiform-commands
-      '((describe-symbol (vertico-sort-function . vertico-sort-alpha))))
+      '((execute-extended-command
+         (:not posframe))
+        (consult-line (:not posframe))
+        (describe-symbol (vertico-sort-function . vertico-sort-alpha))))
 
 (setq vertico-multiform-categories
       '((symbol (vertico-sort-function . vertico-sort-alpha))
@@ -50,6 +53,11 @@
   (setq files (vertico-sort-alpha files))
   (nconc (seq-filter (lambda (x) (string-suffix-p "/" x)) files)
          (seq-remove (lambda (x) (string-suffix-p "/" x)) files)))
+
+;; Set flex completion style in orderless.
+;; This allows me to fuzzy find files in vertico
+;; without having to add spaces between words.
+(setq completion-styles '(basic substring flex))
 
 ;; Do not cache non existing file in projectile
 (defadvice! dont-cache-if-file-doesnt-exist-a (&rest _)

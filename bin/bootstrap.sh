@@ -10,6 +10,7 @@ dnf_packages=(
   alacritty
   grimshot
   hyprland
+  hyprlock
   mako
   pavucontrol
   steam

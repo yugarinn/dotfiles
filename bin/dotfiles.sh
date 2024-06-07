@@ -6,6 +6,7 @@
 mkdir ~/.config/hypr
 ln -s ~/.dotfiles/configs/hypr/hyprland.conf ~/.config/hypr/hyprland.conf
 ln -s ~/.dotfiles/configs/hypr/waybar ~/.config/waybar
+ln -s ~/.dotfiles/configs/hypr/hyprlock.conf ~/.config/hypr/hyprlock.conf
 
 ln -s ~/.dotfiles/configs/doom ~/.config/doom
 ln -s ~/.dotfiles/configs/alacritty ~/.config/alacritty

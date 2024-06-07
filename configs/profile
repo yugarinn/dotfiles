@@ -1,12 +1,9 @@
 # PATH VARIABLES
 # ------------
-export GOPATH=$HOME/work
+export GOPATH=$HOME/.go
 export EDITOR='vim'
-export ANDROID_HOME='/home/sergio/Android/Sdk'
 export JAVA_HOME='/usr/lib/jvm/jre-1.8.0'
 
-export PATH="$PATH:$HOME/.config/composer/vendor/bin"
-export PATH=~/.local/bin:$PATH
 
 # ALIASES
 # ------------
@@ -83,7 +80,10 @@ export XDG_SESSION_TYPE="wayland"
 export XDG_CURRENT_DESKTOP="sway"
 
 export BROWSER="firefox"
-export PATH="$PATH:/home/sergiouve/bin/flutter/bin"
-export PATH="$PATH:/home/sergiouve/bin"
-export PATH="$PATH:/home/sergiouve/local/bin"
+export PATH="$PATH:$HOME/bin/flutter/bin"
+export PATH="$PATH:$HOME/bin"
+export PATH="$PATH:$HOME/local/bin"
 export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$HOME/.go/bin
+export PATH="$PATH:$HOME/.config/composer/vendor/bin"
+export PATH=~/.local/bin:$PATH
