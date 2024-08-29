@@ -5,6 +5,7 @@
 
 mkdir ~/.config/hypr
 mkdir ~/.config/wofi
+
 ln -s ~/.dotfiles/configs/hypr/hyprland.conf ~/.config/hypr/hyprland.conf
 ln -s ~/.dotfiles/configs/hypr/waybar ~/.config/waybar
 ln -s ~/.dotfiles/configs/hypr/hyprlock.conf ~/.config/hypr/hyprlock.conf
