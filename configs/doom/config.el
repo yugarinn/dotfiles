@@ -71,6 +71,8 @@
 ;; Modus Themes
 (after! modus-themes
   (setq modus-themes-tabs-accented t)
+  (setq modus-themes-common-palette-overrides
+        '((underline-ui nil)))
   (setq modus-themes-mode-line '(borderless)))
 
 ;; Org
