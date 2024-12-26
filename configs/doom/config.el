@@ -8,6 +8,7 @@
 (defvar regular-font-size
   (cond ((string-equal (system-name) "soyuz2") 11)
         ((string-equal (system-name) "vostok1") 12)
+        ((string-equal (system-name) "vostok2") 13)
         (t 10)))
 
 (defvar big-font-size

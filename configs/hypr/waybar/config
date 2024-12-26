@@ -5,19 +5,20 @@
     "margin-top": 0,
     "margin-right": 10,
     "margin-bottom": 10,
-    "height": 25,
+    "height": 33,
     "modules-left": ["hyprland/workspaces"],
     "modules-center": ["hyprland/window"],
-    "modules-right": ["tray", "custom/cpu_temp", "custom/gpu_temp", "pulseaudio", "clock"],
+    "modules-right": ["tray", "custom/cpu_temp", "custom/gpu_temp", "pulseaudio", "battery", "clock"],
     "custom/cpu_temp": {
         "exec": "$HOME/.dotfiles/configs/hypr/waybar/cpu_temp.sh",
         "interval": 10,
-        "format": " | {} /"
+        "format": " |  {} "
     },
     "custom/gpu_temp": {
         "exec": "$HOME/.dotfiles/configs/hypr/waybar/gpu_temp.sh",
+        "exec-if": "$HOME/.dotfiles/configs/hypr/utils/is-desktop.sh",
         "interval": 10,
-        "format": " {}   "
+        "format": " / {}   "
     },
     "wlr/workspaces": {
         "disable-scroll": true,
@@ -25,18 +26,34 @@
         "format": "{icon}",
         "on-click": "activate"
     },
+    "hyprland/window": {
+        "format": "{initialTitle}"
+    },
     "tray": {
         "icon-size": 21,
-        "spacing": 10
+        "spacing": 12
     },
     "clock": {
         "format": "{:%A %e %B %Y %H:%M}",
-        "tooltip": false
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode"          : "year",
+            "mode-mon-col"  : 3,
+            "weeks-pos"     : "right",
+            "on-scroll"     : 1,
+            "format": {
+                "months":     "<span color='#ffead3'><b>{}</b></span>",
+                "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+                "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+                "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+                "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+            }
+        }
     },
     "pulseaudio": {
-        "format": "{volume}% {icon} |",
-        "format-bluetooth": "{volume}% {icon} ",
-        "format-muted": " -",
+        "format": " {icon} {volume}% ",
+        "format-bluetooth": "{icon} {volume}%  ",
+        "format-muted": "  - ",
         "format-icons": {
             "headphone": "",
             "hands-free": "",
@@ -49,7 +66,36 @@
         "scroll-step": 1,
         "on-click": "pavucontrol"
     },
-    "sway/window": {
-        "tooltip": false
+    "battery": {
+        "exec-if": "$HOME/.dotfiles/configs/hypr/utils/is-laptop.sh",
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}% |",
+        "format-icons": ["\uf244", "\uf243", "\uf242", "\uf241", "\uf240"]
+    },
+    "privacy": {
+        "icon-spacing": 4,
+        "icon-size": 18,
+        "transition-duration": 250,
+        "modules": [
+            {
+                "type": "screenshare",
+                "tooltip": true,
+                "tooltip-icon-size": 24
+            },
+            {
+                "type": "audio-out",
+                "tooltip": true,
+                "tooltip-icon-size": 24
+            },
+            {
+                "type": "audio-in",
+                "tooltip": true,
+                "tooltip-icon-size": 24
+            }
+        ]
     }
 }

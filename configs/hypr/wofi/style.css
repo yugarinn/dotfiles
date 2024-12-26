@@ -1,6 +1,9 @@
-window {
+window#waybar {
     font-family: "Source Code Pro";
-    font-size: 13px;
+    font-size: 24px;
+}
+
+window {
     margin: 0px;
     border: 5px solid #426CA6;
     background-color: #2B2D3A;

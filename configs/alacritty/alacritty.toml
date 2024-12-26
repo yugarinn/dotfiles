@@ -39,7 +39,7 @@ dim_foreground = "0xdbdbdb"
 foreground = "0xd6d6d6"
 
 [font]
-size = 7.7
+size = 9
 
 [font.normal]
 family = "Inconsolata"
@@ -49,10 +49,12 @@ style = "Regular"
 action = "ToggleFullscreen"
 key = "F11"
 
-[shell]
+[terminal.shell]
 args = ["-l", "-c", "tmux"]
 program = "/bin/zsh"
 
 [window.padding]
 x = 5
 y = 5
+
+[terminal]
