@@ -21,7 +21,7 @@
 (setq doom-big-font (font-spec :family "Source Code Pro" :size big-font-size))
 
 ;; UI
-(setq doom-theme 'doom-one)
+(setq doom-theme 'modus-vivendi)
 (setq display-line-numbers-type 'relative)
 
 ;; Modeline
@@ -135,3 +135,22 @@
   (olivetti-mode 1))
 
 (add-hook 'markdown-mode-hook 'my/markdown-mode-hook)
+
+;; Drag Stuff
+(use-package! drag-stuff
+  :config
+  (drag-stuff-global-mode 1))
+
+;; Rebinds
+(map! :leader
+      :desc "Indent region"
+      "=" #'indent-region
+      :v "=" #'indent-region)
+
+(map! :v "J" #'drag-stuff-down
+      :v "K" #'drag-stuff-up)
+
+(map! :leader
+      :desc "Paste without yank"
+      :v "p" (cmd! (delete-region (region-beginning) (region-end))
+                   (evil-paste-before 1)))
