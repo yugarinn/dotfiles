@@ -26,7 +26,7 @@
   (setq modus-themes-tabs-accented t)
   (setq modus-themes-mode-line '(accented borderless)))
 
-(setq doom-theme 'modus-vivendi)
+(setq doom-theme 'doom-one)
 (setq display-line-numbers-type 'relative)
 
 (setq
