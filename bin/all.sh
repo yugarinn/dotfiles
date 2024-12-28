@@ -1,4 +1,6 @@
-./bin/dotfiles.sh
-./bin/bootstrap.sh
-./bin/config.sh
-./bin/emacs.sh
+# TODO: use path relative to $HOME
+
+./dotfiles.sh
+./bootstrap.sh
+./config.sh
+./emacs.sh
