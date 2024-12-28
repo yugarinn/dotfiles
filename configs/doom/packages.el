@@ -49,11 +49,7 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 
-(package! rubocop)
-(package! company-go)
 (package! lsp-ui)
-(package! feature-mode)
-(package! coffee-mode)
 (package! olivetti)
 (package! drag-stuff)
 

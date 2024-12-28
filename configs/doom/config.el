@@ -21,6 +21,11 @@
 (setq doom-big-font (font-spec :family "Source Code Pro" :size big-font-size))
 
 ;; UI
+;; Modus Themes
+(after! modus-themes
+  (setq modus-themes-tabs-accented t)
+  (setq modus-themes-mode-line '(accented borderless)))
+
 (setq doom-theme 'modus-vivendi)
 (setq display-line-numbers-type 'relative)
 
@@ -69,12 +74,6 @@
 (setq company-show-quick-access t)
 (setq company-idle-delay 0.3)
 
-;; Modus Themes
-(after! modus-themes
-  (setq modus-themes-tabs-accented t)
-  (setq modus-themes-common-palette-overrides
-        '((underline-ui nil)))
-  (setq modus-themes-mode-line '(borderless)))
 
 ;; Org
 (defun my/set-org-margins()
@@ -148,7 +147,9 @@
       :v "=" #'indent-region)
 
 (map! :v "J" #'drag-stuff-down
-      :v "K" #'drag-stuff-up)
+      :v "K" #'drag-stuff-up
+      :v "H" #'drag-stuff-left
+      :v "L" #'drag-stuff-right)
 
 (map! :leader
       :desc "Paste without yank"
