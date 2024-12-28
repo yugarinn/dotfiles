@@ -23,6 +23,17 @@
 (setq doom-theme 'doom-one)
 (setq display-line-numbers-type 'relative)
 
+(setq
+ indent-bars-color '(highlight :face-bg t :blend 0.2)
+ indent-bars-pattern "."
+ indent-bars-starting-column nil
+ indent-bars-width-frac 0.1
+ indent-bars-pad-frac 0.1
+ indent-bars-zigzag nil
+ indent-bars-color-by-depth nil
+ indent-bars-highlight-current-depth '(:face default :blend 0.4)
+ indent-bars-display-on-blank-lines t)
+
 ;; Modeline
 (setq doom-modeline-vcs-max-length 120)
 (setq doom-modeline-modal-icon nil)
