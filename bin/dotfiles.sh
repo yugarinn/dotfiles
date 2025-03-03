@@ -12,6 +12,7 @@ ln -s ~/.dotfiles/configs/hypr/hyprlock.conf ~/.config/hypr/hyprlock.conf
 
 ln -s ~/.dotfiles/configs/doom ~/.config/doom
 ln -s ~/.dotfiles/configs/nvim ~/.config/nvim
+ln -s ~/.dotfiles/configs/ghostty ~/.config/ghostty
 ln -s ~/.dotfiles/configs/alacritty ~/.config/alacritty
 ln -s ~/.dotfiles/configs/tmux/tmux.conf ~/.tmux.conf
 ln -s ~/.dotfiles/configs/hypr/wofi/style.css ~/.config/wofi/style.css

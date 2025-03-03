@@ -1,0 +1,8 @@
+auto-update = "check"
+confirm-close-surface = false
+font-family = "Inconsolata"
+font-size = 7.7
+initial-command = "tmux"
+resize-overlay = "never"
+title = "Ghostty"
+window-decoration = false

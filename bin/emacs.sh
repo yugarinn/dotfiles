@@ -2,7 +2,7 @@ sudo dnf install -y jansson-devel autoconf make gcc texinfo glib2-devel gtk3-dev
 
 git clone git://git.sv.gnu.org/emacs.git
 cd emacs
-git checkout tags/emacs-29.4 29.4
+git checkout tags/emacs-30.1
 
 ./autogen.sh
 ./configure --with-cairo --with-x-toolkit=no \

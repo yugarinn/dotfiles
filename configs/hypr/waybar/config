@@ -5,7 +5,7 @@
     "margin-top": 0,
     "margin-right": 10,
     "margin-bottom": 10,
-    "height": 33,
+    "height": 25,
     "modules-left": ["hyprland/workspaces"],
     "modules-center": ["hyprland/window"],
     "modules-right": ["tray", "custom/cpu_temp", "custom/gpu_temp", "pulseaudio", "battery", "clock"],
@@ -18,7 +18,7 @@
         "exec": "$HOME/.dotfiles/configs/hypr/waybar/gpu_temp.sh",
         "exec-if": "$HOME/.dotfiles/configs/hypr/utils/is-desktop.sh",
         "interval": 10,
-        "format": " / {}   "
+        "format": "{}  "
     },
     "wlr/workspaces": {
         "disable-scroll": true,
@@ -34,7 +34,7 @@
         "spacing": 12
     },
     "clock": {
-        "format": "{:%A %e %B %Y %H:%M}",
+        "format": "| {:%A %d %B %Y %H:%M}",
         "tooltip-format": "<tt><small>{calendar}</small></tt>",
         "calendar": {
             "mode"          : "year",

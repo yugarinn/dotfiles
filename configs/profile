@@ -86,6 +86,7 @@ export PATH="$PATH:$HOME/local/bin"
 export PATH="$PATH:$HOME/.config/composer/vendor/bin"
 export PATH=~/.local/bin:$PATH
 export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$HOME/.go/bin
 
 . "$HOME/.atuin/bin/env"
 

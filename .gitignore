@@ -9,3 +9,6 @@ configs/emacs.d/*
 !configs/emacs.d/snippets
 !configs/emacs.d/init.el
 !configs/emacs.d/custom.el
+
+configs/doom/doom
+configs/doom/custom.el
